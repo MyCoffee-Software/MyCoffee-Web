@@ -22,7 +22,7 @@ const SignIn = () => {
 
       <C.ContentHalf>
         <C.Content>
-          <C.Label fontSize="40px" fontColor="#616161" fontWeight="700"> Faça seu login </C.Label>
+          <C.Label fontSize="40px" mobileFontSize="24px" fontColor="#616161" fontWeight="700"> Faça seu login </C.Label>
 
           <C.LabelContent>
             <C.Label> Email </C.Label>
