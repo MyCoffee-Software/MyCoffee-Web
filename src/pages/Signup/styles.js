@@ -45,8 +45,8 @@ export const ContentHalf = styled(Half)`
 `;
 
 export const Logo = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 50%;
+  max-height: 50%;
 `;
 
 export const Content = styled.div`

@@ -4,7 +4,7 @@ import LayoutWithSidebar from "../components/Layouts/LayoutWithSidebar";
 import LayoutWithoutSidebar from "../components/Layouts/LayoutWithoutSidebar";
 import SignIn from "../pages/Signin";
 import SignUp from "../pages/Signup";
-import AvailableProducts from "../pages/AvailableProducts";
+
 
 const RoutesApp = () => {
   return (
@@ -15,8 +15,7 @@ const RoutesApp = () => {
           <Route path="/signup" element={<SignUp />} />
 
           <Route element={<LayoutWithSidebar />}>
-            <Route path="/" element={<AvailableProducts />} />
-            <Route path="*" element={<AvailableProducts />} />
+
           </Route>
 
           <Route element={<LayoutWithoutSidebar />}>
