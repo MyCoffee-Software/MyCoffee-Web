@@ -1,7 +1,7 @@
 import React from 'react'
 import * as C from "./styles"
 
-const SignInput = ({ type, placeholder, value, onChange }) => {
+const Input = ({ type, placeholder, value, onChange }) => {
   return (
     <C.Input
       className='input'
@@ -13,4 +13,4 @@ const SignInput = ({ type, placeholder, value, onChange }) => {
   );
 };
 
-export default SignInput;
+export default Input;
