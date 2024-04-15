@@ -23,8 +23,7 @@ const SignIn = () => {
 
       <C.ContentHalf>
         <C.Content>
-          <C.Label fontSize="40px" fontColor="#616161" fontWeight="700"> Crie sua conta </C.Label>
-
+          <C.Label fontSize="40px" mobileFontSize="24px" fontColor="#616161" fontWeight="700"> Crie sua conta </C.Label>
           <C.LabelContent>
             <C.Label> Nome </C.Label>
             <SignInput

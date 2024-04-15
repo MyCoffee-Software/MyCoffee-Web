@@ -1,8 +1,17 @@
 import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const Container = styled.div`
   display: flex;
   height: 100vh;
+
+  @media  ${device.sm} {
+    flex-direction: column;
+  }
+
+  @media  ${device.md} {
+    flex-direction: column;
+  }
 `;
 
 export const Half = styled.div`
@@ -16,6 +25,16 @@ export const LogoHalf = styled(Half)`
   align-items: center;
   justify-content: center;
   background-color: #decdbb;
+
+  @media ${device.sm} {
+    max-height: 200px;
+    border-bottom-left-radius: 47px;
+  }
+
+  @media ${device.md} {
+    max-height: 300px;
+    border-bottom-left-radius: 47px;
+  }
 `;
 
 export const ContentHalf = styled(Half)`
@@ -58,13 +77,9 @@ export const Label = styled.label`
 
   font-family: "Inter", sans-serif;
   letter-spacing: 0%;
-`;
 
-export const Strong = styled.strong`
-  cursor: pointer;
-
-  a {
-    text-decoration: none;
-    color: #676767;
+  @media ${device.sm} {
+    font-size: ${(props) => props.mobileFontSize || '12px'};
   }
+
 `;
