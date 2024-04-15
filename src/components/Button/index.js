@@ -1,7 +1,7 @@
 import React from 'react'
 import * as C from "./styles" 
 
-const SignButton = ({ Text, onClick, Type = "button" }) => {
+const Button = ({ Text, onClick, Type = "button" }) => {
   return (
     <C.Button type={Type} onClick={onClick}>
         {Text}
@@ -9,4 +9,4 @@ const SignButton = ({ Text, onClick, Type = "button" }) => {
   );
 };
 
-export default SignButton
+export default Button

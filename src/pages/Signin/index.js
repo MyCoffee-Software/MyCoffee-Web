@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SignInput from '../../components/Input';
-import SignButton from '../../components/Button';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 import * as C from "./styles";
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/iconeCafe.svg'
@@ -26,7 +26,7 @@ const SignIn = () => {
 
           <C.LabelContent>
             <C.Label> Email </C.Label>
-            <SignInput
+            <Input
               type="email"
               placeholder="Digite seu E-mail"
               value={email}
@@ -34,7 +34,7 @@ const SignIn = () => {
             />
 
             <C.Label> Senha </C.Label>
-            <SignInput
+            <Input
               type="password"
               placeholder="Digite sua senha"
               value={senha}
@@ -44,7 +44,7 @@ const SignIn = () => {
 
           <C.Label fontColor="#ff0000">{error}</C.Label>
 
-          <SignButton Text="Entrar" onClick={handleLogin} />
+          <Button Text="Entrar" onClick={handleLogin} />
 
           <C.Label>
             Não tem conta?
