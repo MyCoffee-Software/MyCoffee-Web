@@ -1,17 +1,12 @@
-import logo from './iconeCafe.svg';
-import './App.css';
+import React from "react";
+import GlobalStyle from "./styles/global";
+import RoutesApp from './routes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a>
-          Inicio projeto MyCoffee Web
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <RoutesApp />
+    <GlobalStyle />
+  </div>
+);
 
 export default App;
