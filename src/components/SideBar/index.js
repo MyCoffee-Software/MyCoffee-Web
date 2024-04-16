@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import * as C from "./style";
 import MediaQuery from "react-responsive";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ isOpen, onToggleSidebar }) => {
   const sidebarRef = useRef();
@@ -21,6 +22,16 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
 
       <MediaQuery maxWidth={1279}>
         <C.MobileSidebarWrapper isOpenn={isOpen} ref={sidebarRef}>
+          <C.MobileUserWrapper>
+            <C.MobileContent>
+              <Link to="/signin">
+                <C.StyledIcon icon={faUserCircle} size="50px"/>  
+              </Link>
+
+              <C.Label>fulano da silva</C.Label>
+            </C.MobileContent>
+          </C.MobileUserWrapper>
+
           <C.SidebarContent>
             <C.ContentButton>Cafés</C.ContentButton>
             <C.ContentButton>Cápsulas</C.ContentButton>

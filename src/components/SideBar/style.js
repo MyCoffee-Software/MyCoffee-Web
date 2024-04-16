@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../styles/device";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,32 +15,6 @@ export const SidebarWrapper = styled.div`
   height: 100vh;
   top: 80;
   left: 0;
-
-  @media ${device.lg} {
-    display: ${(props) => (props.isOpenn ? "block" : "inline")};
-    left: ${(props) => (props.isOpenn ? "0" : "-250px")};
-    position: fixed;
-    top: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: white;
-    transition: left 0.3s ease-in-out;
-    padding: 0;
-    margin: 0;
-  }
-`;
-
-export const MobileSidebarWrapper = styled.div`
-  left: ${(props) => (props.isOpenn ? "0" : "-250px")};
-  border-right: 2px solid #DECDBB;
-  position: fixed;
-  top: 0;
-  width: 250px;
-  height: 100vh;
-  background-color: white;
-  transition: left 0.3s ease-in-out;
-  padding: 0;
-  margin: 0;
 `;
 
 export const SidebarContent = styled.div`
@@ -67,6 +42,34 @@ export const Content = styled.div`
   padding-left: 20px;
 `;
 
+export const MobileSidebarWrapper = styled.div`
+  left: ${(props) => (props.isOpenn ? "0" : "-250px")};
+  border-right: 2px solid black;
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: white;
+  transition: left 0.3s ease-in-out;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MobileUserWrapper = styled.div`
+  background-color: #DECDBB;
+  width: 100%;
+  height: 90px;
+`;
+
+export const MobileContent = styled.div`
+  display: flex;
+  padding-top: 20px;
+  padding-left: 20px;
+  align-items: center;
+`;
+
 export const Aside = styled.aside`
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
@@ -74,5 +77,16 @@ export const Aside = styled.aside`
   left: ${(props) => (props.isOpenn ? "250px" : "0")};
   width: ${(props) => (props.isOpenn ? "calc(100% - 250px)" : "0")};
   height: 100vh;
+`;
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: ${(props) => props.size || '32px'};
+  
+  color: black;
+`;
+
+export const Label = styled.label`
+  font-size: 14px;
+  margin-left: 10px;
   
 `;
