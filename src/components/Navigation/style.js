@@ -7,6 +7,7 @@ export const NavigationWrapper = styled.nav`
   height: 80px;
   width: 100%;
   margin-bottom: 20px;
+  border-bottom: 2px solid #4A0404;
 `;
 
 export const NavigationContent = styled.div`

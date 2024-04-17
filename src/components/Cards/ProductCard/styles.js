@@ -101,11 +101,11 @@ export const BuyButton = styled.div`
   text-align: center;
   cursor: pointer;
   border-radius: 30px;
-  background-color:  #ae7347;
+  background-color:  #B77A4D;
   color: white;
   padding: 10px 15px;
   outline: none;
-  border: 2px solid #4A0404;
+  border: 2px solid #94623D;
   font-size: calc(15px + 0.290625vw);
   font-family: "Scope One", serif;
 
