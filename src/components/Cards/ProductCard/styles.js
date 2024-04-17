@@ -9,29 +9,62 @@ export const ProductWrapper = styled.div`
   box-shadow: 0px 4px 4px #aaaaaa;
   background-color: #ffffff;
   padding: 16px;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+
   margin-bottom: 20px;
 `;
 
-export const Image = styled.img`
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid black;
-  object-fit: contain;
+export const ImageContainer = styled.div`
+  width: 180px;
+  height: 200px;
 
   @media ${device.lg} {
-    max-height: 100px;
+    width: 100px;
+    height: 120px;
   }
 
   @media ${device.sm} {
-    max-height: 70px;
+    width: 50px;
+    height: 70px;
+  }
+`;
+
+export const Image = styled.img`
+  width: 180px;
+  height: 200px;
+  object-fit: contain;
+
+  @media ${device.lg} {
+    width: 100px;
+    height: 120px;
+  }
+
+  @media ${device.sm} {
+    width: 50px;
+    height: 70px;
+  }
+`;
+
+export const NameContainer = styled.div`
+  width: 220px;
+  height: 120px;
+
+  @media ${device.lg} {
+    width: 190px;
+    height: 120px;
+  }
+
+  @media ${device.sm} {
+    width: 140px;
+    height: 90px;
   }
 `;
 
 export const Name = styled.label`
   font-family: "Scope One", serif;
   font-weight: 400;
+  text-align: justify;
   margin: 16px 0;
 
   max-width: 100%;
@@ -57,7 +90,7 @@ export const BottomWrapper = styled.div`
 
 export const Price = styled.p`
   font-family: "Scope One", serif;
-  font-weight: 400;
+  font-weight: 600;
   margin-right: 16px;
 
   font-size: calc(15px + 0.390625vw);
@@ -72,7 +105,7 @@ export const BuyButton = styled.div`
   color: white;
   padding: 10px 15px;
   outline: none;
-  border: none;
+  border: 2px solid #4A0404;
   font-size: calc(15px + 0.290625vw);
   font-family: "Scope One", serif;
 
@@ -80,4 +113,14 @@ export const BuyButton = styled.div`
     margin-top: 10px;
     padding: 5px 10px;
   }
+`;
+
+export const line = styled.hr`
+  height: 2px;
+  width: 100%;
+  border-width: 0;
+  background-color: #6E260E;
+
+  margin-top: 10px;
+  margin-bottom: -5px;
 `;
