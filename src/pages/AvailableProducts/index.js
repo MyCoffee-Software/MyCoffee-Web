@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from "../../components/Cards/ProductCard";
 import * as C from "./styles";
 import img from "../../assets/iconeCafe.svg";
 
 function AvailableProducts() {
-  const data = {
-    name: "café grão muito bom mesmo tipo é serio bom dms mano é serio bom dms mano erio bom dms mano erio bom dms manoerio bom dms mano",
-    price: 990099.99,
-    image: img
-  };
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (e) {
+        console.error("Error")
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <C.ProductsWrapper>
-      <C.ProductsContent>
-        <ProductCard product={data} />
-      </C.ProductsContent>
+      {products.map((product) => (
+        <C.ProductsContent>
+          <ProductCard key={product.id} product={product} />
+        </C.ProductsContent>
+      ))}
     </C.ProductsWrapper>
   );
 };
