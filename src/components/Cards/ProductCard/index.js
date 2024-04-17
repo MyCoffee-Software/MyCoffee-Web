@@ -1,20 +1,26 @@
 import React from 'react';
 import * as C from "./styles";
 import Button from '../../Button';
+import MediaQuery from 'react-responsive';
 
 const ProductCard = ({ product, handleBuy }) => {
   return (
-    <C.Container>
-      <C.FirstContainer>
-        <C.Image src={product.image} alt={product.name} />
-        <C.Name>{product.name}</C.Name>
-      </C.FirstContainer>
+    <C.ProductWrapper>
+      <C.Image src={product.image} alt={product.name} />
+      <C.Name>{product.name}</C.Name>
+
+      <MediaQuery minWidth={1280}>
+        <C.BottomWrapper>
+          <C.Price>R${product.price}</C.Price>
+          <C.BuyButton onClick={handleBuy}>Comprar</C.BuyButton>
+        </C.BottomWrapper>
+      </MediaQuery>
       
-      <C.SecondContainer>
-        <C.Price>{product.price}</C.Price>
+      <MediaQuery maxWidth={1279}>
+        <C.Price>R${product.price}</C.Price>
         <C.BuyButton onClick={handleBuy}>Comprar</C.BuyButton>
-      </C.SecondContainer>
-    </C.Container>
+      </MediaQuery>
+    </C.ProductWrapper>
   );
 };
 
