@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../styles/device";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const NavigationWrapper = styled.nav`
   background-color: #DECDBB;
@@ -19,9 +19,16 @@ export const NavigationContent = styled.div`
 `;
 
 export const Logo = styled.img`
+  height: ${(props) => props.height || '70px'};
+  width: ${(props) => props.width || '70px'};
+
   margin: 0;
-  height: 70px;
-  width: 70px;
+`;
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: ${(props) => props.size || '32px'};
+  
+  color: black;
 `;
 
 export const NavigationItems = styled.ul`
@@ -61,4 +68,5 @@ export const UserWrapper = styled.div`
 
 export const Label = styled.label`
   font-size: 16px;
+  margin-right: 16px;
 `;
