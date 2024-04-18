@@ -3,13 +3,14 @@ import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState();
   const [token, setToken] = useState(null);
 
   useEffect(() => {
     const userToken = localStorage.getItem("user_token")
 
     if (userToken) {
-      fetch('https://fakestoreapi.com/users', {
+      fetch('https://api.escuelajs.co/api/v1/auth/profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${userToken}`
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
           return response.json();
         })
         .then(user => {
-          setToken(user);
+          setUser(user);
         })
         .catch(error => {
           console.error('Erro ao obter informações do usuário:', error.message);
@@ -32,13 +33,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('https://fakestoreapi.com/auth/login', {
+      const response = await fetch('https://api.escuelajs.co/api/v1/auth/login', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: username,
+          email: username,
           password: password,
         }),
       });
@@ -55,9 +56,9 @@ export const AuthProvider = ({ children }) => {
         throw new Error("Não foi possível fazer login");
       }
 
-      const { token } = await response.json();
-      setToken(token);
-      localStorage.setItem("user_token", token);
+      const { access_token, refresh_token } = await response.json();
+      setToken(access_token);
+      localStorage.setItem("user_token", access_token);
     } catch (error) {
       console.error("Erro ao fazer login:", error.message);
       throw error;
@@ -70,6 +71,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = {
+    user,
     token,
     login,
     logout
