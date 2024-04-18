@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const SidebarWrapper = styled.div`
   background-color: white;
-  border-right: 2px solid #DECDBB;
+  height: 100%;
   color: black;
   width: 200px;
   margin-top: -20px;
@@ -18,7 +18,7 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SidebarContent = styled.div`
-  padding-top: 20px;
+  padding-top: 50px;
   padding-right: 20px;
 `;
 
@@ -29,6 +29,7 @@ export const ContentButton = styled.div`
   padding: 10px;
   cursor: pointer;
   background-color: #DECDBB;
+  border: 2px solid #CDB499;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 
