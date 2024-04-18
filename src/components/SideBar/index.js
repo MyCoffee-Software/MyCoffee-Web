@@ -3,8 +3,10 @@ import { Link, Outlet } from 'react-router-dom';
 import * as C from "./style";
 import MediaQuery from "react-responsive";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = ({ isOpen, onToggleSidebar }) => {
+  const { user } = useAuth();
   const sidebarRef = useRef();
 
   return (
@@ -24,11 +26,20 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
         <C.MobileSidebarWrapper isOpenn={isOpen} ref={sidebarRef}>
           <C.MobileUserWrapper>
             <C.MobileContent>
-              <Link to="/signin">
-                <C.StyledIcon icon={faUserCircle} size="50px"/>  
-              </Link>
+              {user ? (
+                <>
+                  <C.StyledIcon icon={faUserCircle} size="50px" />
+                  <C.Label>{user.name}</C.Label>
+                </>
+              ) : (
+                <>
+                  <Link to="/signin">
+                    <C.StyledIcon icon={faUserCircle} size="50px" />
+                  </Link>
 
-              <C.Label>fulano da silva</C.Label>
+                  <C.Label>Fazer login</C.Label>
+                </>
+              )}
             </C.MobileContent>
           </C.MobileUserWrapper>
 
@@ -41,7 +52,7 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
         </C.MobileSidebarWrapper>
 
         {isOpen && (
-          <C.Aside onClick={onToggleSidebar} isOpenn={isOpen}/>
+          <C.Aside onClick={onToggleSidebar} isOpenn={isOpen} />
         )}
       </MediaQuery>
 

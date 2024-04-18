@@ -4,8 +4,11 @@ import MediaQuery from "react-responsive";
 import * as C from "./style";
 import logo from "../../assets/iconeCafe.svg";
 import { faBars, faCartShopping, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth";
 
-const Navigation = ( {onToggleSidebar} ) => {
+const Navigation = ({ onToggleSidebar }) => {
+  const { user } = useAuth();
+
   return (
     <C.NavigationWrapper>
       <C.NavigationContent>
@@ -20,27 +23,35 @@ const Navigation = ( {onToggleSidebar} ) => {
 
           <C.UserWrapper>
             <C.SearchBar />
-            
-            <Link to="/signin">
-              <C.StyledIcon icon={faCircleUser} size="50px" fixedWidth/>
-            </Link>
-            
-            <C.Label>Olá </C.Label>
+
+            {user ? (
+              <>
+                <C.StyledIcon icon={faCircleUser} size="50px" fixedWidth />
+                <C.Label>{user.name}</C.Label>
+              </>
+            ) : (
+              <>
+                <Link to="/signin">
+                  <C.StyledIcon icon={faCircleUser} size="50px" fixedWidth />
+                </Link>
+                <C.Label>Fazer login</C.Label>
+              </>
+            )}
 
             <Link>
-              <C.StyledIcon icon={faCartShopping} size="50px" fixedWidth/>
+              <C.StyledIcon icon={faCartShopping} size="50px" fixedWidth />
             </Link>
           </C.UserWrapper>
         </MediaQuery>
 
         <MediaQuery maxWidth={1279}>
           <div onClick={onToggleSidebar} style={{ cursor: "pointer" }}>
-            <C.StyledIcon icon={faBars}/>
+            <C.StyledIcon icon={faBars} />
           </div>
 
           <C.Logo src={logo} />
 
-          <C.StyledIcon icon={faCartShopping}/>
+          <C.StyledIcon icon={faCartShopping} />
         </MediaQuery>
 
       </C.NavigationContent>
