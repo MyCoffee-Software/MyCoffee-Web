@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductCard from "../../components/Cards/ProductCard";
 import * as C from "./styles";
-import img from "../../assets/iconeCafe.svg";
 
 function AvailableProducts() {
   const [products, setProducts] = useState([]);
