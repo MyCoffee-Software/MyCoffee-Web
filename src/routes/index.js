@@ -12,11 +12,11 @@ const RoutesApp = () => {
     <BrowserRouter>
       <Fragment>
         <Routes>
-          <Route path="/signin" element={<SignIn />} />
+          <Route exact path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route element={<LayoutWithSidebar />}>
-            <Route path="/" element={<AvailableProducts />} />
+            <Route path="/products" element={<AvailableProducts />} />
           </Route>
 
           <Route element={<LayoutWithoutSidebar />}>

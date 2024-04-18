@@ -4,8 +4,11 @@ import MediaQuery from "react-responsive";
 import * as C from "./style";
 import logo from "../../assets/iconeCafe.svg";
 import { faBars, faCartShopping, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth";
 
 const Navigation = ( {onToggleSidebar} ) => {
+  const { token }  = useAuth();
+
   return (
     <C.NavigationWrapper>
       <C.NavigationContent>
@@ -25,7 +28,13 @@ const Navigation = ( {onToggleSidebar} ) => {
               <C.StyledIcon icon={faCircleUser} size="50px" fixedWidth/>
             </Link>
             
-            <C.Label>Olá </C.Label>
+            <C.Label>
+              {token ? (
+                "Olá mano"
+              ) : (
+                "Olá"
+              )} 
+            </C.Label>
 
             <Link>
               <C.StyledIcon icon={faCartShopping} size="50px" fixedWidth/>
