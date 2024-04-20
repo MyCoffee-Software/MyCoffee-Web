@@ -1,17 +1,30 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  margin-top: 60px;
   max-width: 70%;
+
+  @media ${device.sm} {
+    max-width: 100%;
+    margin-top: 0;
+  }
 `;
 
 export const ProcutContent = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+
+  @media ${device.sm} {
+    margin-top: 0;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -20,11 +33,20 @@ export const ImageContainer = styled.div`
   justify-content: center;
   margin-right: 20px;
   width: 55%;
+
+  @media ${device.sm} {
+    width: 100%;
+    margin-right: 0;
+  }
 `;
 
 export const Image = styled.img`
   max-width: 80%;
-  height: auto;
+  height: 300px;
+
+  @media ${device.sm} {
+    height: 250px;
+  }
 `;
 
 export const DetailsContainer = styled.div`
@@ -35,6 +57,12 @@ export const DetailsContainer = styled.div`
   margin-left: 20px;
   text-align: justify;
   padding-top: 30px;
+
+  @media ${device.sm} {
+    width: 95%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
 `;
 
 export const Label = styled.label`
@@ -70,4 +98,10 @@ export const BuyButton = styled.div`
   border: 2px solid #94623D;
   font-size: calc(15px + 0.290625vw);
   font-family: "Scope One", serif;
+
+  @media ${device.sm} {
+    width: 90%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
 `;
