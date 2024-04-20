@@ -5,6 +5,7 @@ import LayoutWithoutSidebar from "../components/Layouts/LayoutWithoutSidebar";
 import SignIn from "../pages/Signin";
 import SignUp from "../pages/Signup";
 import AvailableProducts from "../pages/AvailableProducts";
+import Product from "../pages/Product";
 
 
 const RoutesApp = () => {
@@ -13,14 +14,14 @@ const RoutesApp = () => {
       <Fragment>
         <Routes>
           <Route exact path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route exact path="/signup" element={<SignUp />} />
 
           <Route element={<LayoutWithSidebar />}>
             <Route path="/products" element={<AvailableProducts />} />
           </Route>
 
           <Route element={<LayoutWithoutSidebar />}>
-            
+            <Route exact path="/product/:product_id" element={<Product />} />
           </Route>
         </Routes>
       </Fragment>
