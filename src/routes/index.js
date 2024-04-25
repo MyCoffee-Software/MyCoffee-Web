@@ -5,6 +5,8 @@ import LayoutWithoutSidebar from "../components/Layouts/LayoutWithoutSidebar";
 import SignIn from "../pages/Signin";
 import SignUp from "../pages/Signup";
 import AvailableProducts from "../pages/AvailableProducts";
+import AboutUs from "../pages/AboutUs";
+import Cart from "../pages/Cart";
 
 
 const RoutesApp = () => {
@@ -18,9 +20,9 @@ const RoutesApp = () => {
           <Route element={<LayoutWithSidebar />}>
             <Route path="/products" element={<AvailableProducts />} />
           </Route>
-
           <Route element={<LayoutWithoutSidebar />}>
-            
+            <Route path="/about_us" element={<AboutUs />} />
+            <Route path="/cart" element={<Cart />} />
           </Route>
         </Routes>
       </Fragment>
