@@ -30,10 +30,12 @@ export const Icon = styled.div`
   cursor: pointer;
 `;
 
-export const UserIcon = styled.div`
-  width: 40px;
-  height: 40px;
+export const UserIcon = styled.img`
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  border: 1px black solid;
+  margin-right: 10px;
 `;
 
 export const StyledIcon = styled(FontAwesomeIcon)`

@@ -1,7 +1,7 @@
 import React from 'react'
 import * as C from "./styles"
 
-const Input = ({ type, placeholder, value, onChange }) => {
+const Input = ({ type, placeholder, value, onChange, disabled }) => {
   return (
     <C.Input
       className='input'
@@ -9,6 +9,7 @@ const Input = ({ type, placeholder, value, onChange }) => {
       onChange={onChange}
       type={type}
       placeholder={placeholder}
+      disabled={disabled}
     />
   );
 };
