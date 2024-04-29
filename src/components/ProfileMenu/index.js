@@ -2,11 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import * as C from "./styles";
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileMenu = ( { userImage } ) => {
   const { logout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef();
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -14,7 +16,7 @@ const ProfileMenu = ( { userImage } ) => {
 
   const handleLogout = () => {
     logout();
-    window.location.reload();
+    navigate("/products");
   };
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const ProfileMenu = ( { userImage } ) => {
 
       <C.DropdownContent show={showDropdown}>
         <C.MenuItem to="/profile">Perfil</C.MenuItem>
-        <C.MenuItem onClick={handleLogout} >Sair</C.MenuItem>
+        <C.MenuItem to="/products" onClick={handleLogout} >Sair</C.MenuItem>
       </C.DropdownContent>
     </C.DropdownMenu>
   );
