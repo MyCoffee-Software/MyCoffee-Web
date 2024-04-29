@@ -1,10 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { device } from "../../styles/device";
 
 export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media ${device.md} {
+    align-items: center;
+  }
 `;
 
 export const Banner = styled.div`
@@ -48,11 +53,21 @@ export const UserInfoWrapper = styled.div`
   margin-top: 20px;
   margin-left: 50px;
   width: 60%;
+
+  @media ${device.sm} {
+    margin-left: 0px;
+    flex-direction: column;
+  }
 `;
 
 export const UserInfoColumn = styled.div`
-  flex: 1;
-  width: 50px;
+  width: 50%;
+  padding: 0 10px;
+
+  @media ${device.sm} {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

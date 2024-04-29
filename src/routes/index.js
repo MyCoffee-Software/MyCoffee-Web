@@ -7,6 +7,7 @@ import SignUp from "../pages/Signup";
 import AvailableProducts from "../pages/AvailableProducts";
 import Product from "../pages/Product";
 import Profile from "../pages/Profile";
+import { useMediaQuery } from "react-responsive";
 
 
 const RoutesApp = () => {
