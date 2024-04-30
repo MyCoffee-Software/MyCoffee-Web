@@ -7,7 +7,7 @@ import logo from '../../assets/iconeCafe.svg'
 import useAuth from '../../hooks/useAuth';
 
 const SignIn = () => {
-  const { login } = useAuth();
+  const { login, setUser } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -22,11 +22,27 @@ const SignIn = () => {
 
     try {
       await login(email, password);
+      setUser(await getUserData());
       navigate("/products");
     } catch (error) {
       setError(error.message);
     }
   }
+
+  const getUserData = async () => {
+    const response = await fetch('https://api.escuelajs.co/api/v1/auth/profile', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Erro ao obter informações do usuário");
+    }
+
+    return response.json();
+  };
 
   return (
     <C.Container>

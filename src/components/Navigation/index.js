@@ -5,6 +5,7 @@ import * as C from "./style";
 import logo from "../../assets/iconeCafe.svg";
 import { faBars, faCartShopping, faCircleUser, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
+import ProfileMenu from "../ProfileMenu";
 
 const Navigation = ({ onToggleSidebar, back }) => {
   const { user } = useAuth();
@@ -26,7 +27,7 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
             {user ? (
               <>
-                <C.StyledIcon icon={faCircleUser} size="50px" fixedWidth />
+                <ProfileMenu userImage={user.avatar} />
                 <C.Label>{user.name}</C.Label>
               </>
             ) : (
