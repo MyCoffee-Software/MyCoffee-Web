@@ -65,6 +65,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (userId, userData) => {
+    try {
+      const response = await fetch(`https://api.escuelajs.co/api/v1/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(userData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao atualizar os dados do usuário');
+      }
+  
+      return response.json();
+    } catch (error) {
+      console.error('Erro ao atualizar os dados do usuário:', error.message);
+      throw error;
+    }
+  }
+
   const logout = () => {
     setToken(null);
     setUser(null);
@@ -76,7 +98,8 @@ export const AuthProvider = ({ children }) => {
     setUser,
     token,
     login,
-    logout
+    logout,
+    updateUser
   };
 
   return (

@@ -54,7 +54,7 @@ export const UserInfoWrapper = styled.div`
   margin-left: 50px;
   width: 60%;
 
-  @media ${device.sm} {
+  @media ${device.md} {
     margin-left: 0px;
     flex-direction: column;
   }
@@ -64,7 +64,7 @@ export const UserInfoColumn = styled.div`
   width: 50%;
   padding: 0 10px;
 
-  @media ${device.sm} {
+  @media ${device.md} {
     width: 100%;
     padding: 0;
   }

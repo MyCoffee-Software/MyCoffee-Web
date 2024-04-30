@@ -6,18 +6,30 @@ import InfoInput from '../../components/InfoInput';
 import Button from '../../components/Button';
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const [edit, setEdit] = useState(true);
+  const [userData, setUserData] = useState({
+    name: user.name,
+    email: user.email
+  });
 
   const handleEdit = () => {
     setEdit(!edit);
-  }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, inputInfo } = e.target;
+    setUserData((prevInputData) => ({
+      ...prevInputData,
+      [name]: inputInfo,
+    }));
+  };
 
   const handlePasswordChange = () => {
 
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
 
   }
 
@@ -35,19 +47,19 @@ const Profile = () => {
 
       <C.UserInfoWrapper>
         <C.UserInfoColumn>
-          <InfoInput title="Nome" inputInfo={user.name} disabled={edit} />
-          <InfoInput title="Email" inputInfo={user.email} disabled={edit} />
-          <InfoInput title="Data de nascimento" inputInfo={user.name} disabled={edit} />
-          <InfoInput title="Telefone" inputInfo={user.name} disabled={edit} />
-          <InfoInput title="RG" inputInfo={user.name} disabled={edit} />
+          <InfoInput title="Nome" name="name" inputInfo={userData.name} disabled={edit} onChange={handleInputChange} />
+          <InfoInput title="Email" name="email" inputInfo={userData.email} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Data de nascimento" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Telefone" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="RG" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
         </C.UserInfoColumn>
 
         <C.UserInfoColumn>
-          <InfoInput title="CEP" inputInfo={user.name} disabled={edit} />
-          <InfoInput title="Endereço" inputInfo={user.email} disabled={edit} />
-          <InfoInput title="Estado" inputInfo={user.email} disabled={edit} />
-          <InfoInput title="Cidade" inputInfo={user.name} disabled={edit} />
-          <InfoInput title="Número" inputInfo={user.name} disabled={edit} />
+          <InfoInput title="CEP" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Endereço" inputInfo={userData.email} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Estado" inputInfo={userData.email} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Cidade" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
+          <InfoInput title="Número" inputInfo={userData.name} disabled={edit} onChange={handleInputChange}/>
         </C.UserInfoColumn>
       </C.UserInfoWrapper>
 
