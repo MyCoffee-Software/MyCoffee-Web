@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
 import logo from "../../assets/iconeCafe.svg";
-import { faBars, faCartShopping, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping, faCircleUser, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 
-const Navigation = ({ onToggleSidebar }) => {
+const Navigation = ({ onToggleSidebar, back }) => {
   const { user } = useAuth();
 
   return (
@@ -45,9 +45,15 @@ const Navigation = ({ onToggleSidebar }) => {
         </MediaQuery>
 
         <MediaQuery maxWidth={1279}>
-          <div onClick={onToggleSidebar} style={{ cursor: "pointer" }}>
-            <C.StyledIcon icon={faBars} />
-          </div>
+          {back ? (
+            <Link to={"/products"}>
+              <C.StyledIcon icon={faArrowLeft} />
+            </Link>
+          ) : (
+            <div onClick={onToggleSidebar} style={{ cursor: "pointer" }}>
+              <C.StyledIcon icon={faBars} />
+            </div>
+          )}
 
           <C.Logo src={logo} />
 

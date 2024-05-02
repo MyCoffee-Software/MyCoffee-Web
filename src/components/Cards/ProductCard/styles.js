@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../../styles/device";
+import { Link } from "react-router-dom";
 
 export const ProductWrapper = styled.div`
   display: flex;
@@ -71,7 +72,6 @@ export const Name = styled.label`
   overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
-
   
   line-height: 1.2em;
   display: -webkit-box;
@@ -79,6 +79,15 @@ export const Name = styled.label`
   -webkit-box-orient: vertical;
 
   font-size: calc(15px + 0.290625vw);
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: red;
+  }
 `;
 
 export const BottomWrapper = styled.div`
