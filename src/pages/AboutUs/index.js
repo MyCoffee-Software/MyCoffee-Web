@@ -1,8 +1,8 @@
 import React from "react"
 import * as C from "./styles";
-import Cabecalho from './components/Cabecalho';
-import Texto from './components/Texto';
-import Fundadores from './components/Fundadores';
+import Cabecalho from '../../components/AboutUs/Cabecalho';
+import Texto from '../../components/AboutUs/Texto';
+import Fundadores from '../../components/AboutUs/Fundadores';
 
 function AboutUs() {
   return (
