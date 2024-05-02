@@ -6,6 +6,8 @@ import SignIn from "../pages/Signin";
 import SignUp from "../pages/Signup";
 import AvailableProducts from "../pages/AvailableProducts";
 import Product from "../pages/Product";
+import Profile from "../pages/Profile";
+import { useMediaQuery } from "react-responsive";
 import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
 
@@ -25,6 +27,8 @@ const RoutesApp = () => {
           <Route exact path="/product/:product_id" element={<Product />} />
           <Route path="/about_us" element={<AboutUs />} />
             <Route path="/cart" element={<Cart />} />
+            <Route exact path="/product/:product_id" element={<Product />} />
+            <Route exact path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Fragment>
