@@ -9,6 +9,7 @@ import Product from "../pages/Product";
 import Profile from "../pages/Profile";
 import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
+import Plan from "../pages/Plan";
 
 
 const RoutesApp = () => {
@@ -31,6 +32,7 @@ const RoutesApp = () => {
             <Route path="/cart" element={<Cart />} />
             <Route exact path="/product/:product_id" element={<Product />} />
             <Route exact path="/profile" element={<Profile />} />
+            <Route exact path="/plans" element={<Plan />} />
           </Route>
         </Routes>
       </Fragment>
