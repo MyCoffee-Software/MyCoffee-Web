@@ -6,10 +6,28 @@ export const Container = styled.div`
 `;
 
 export const BannerContainer = styled.div`
-  max-width: 100%; /* Largura máxima do contêiner */
-  margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: -20px;
   flex: 1;
 `;
 
 export const BannerImage = styled.img`
-  width: 100%; 
+  width: 100%;
+`;
+
+export const TextsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const LeftTextBlockContainer = styled.div`
+  flex: 1;
+  margin-right: 10px;
+`;
+
+export const RightTextBlockContainer = styled.div`
+  flex: 1;
+  margin-left: 10px;
+`;
