@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export const NavigationWrapper = styled.nav`
   background-color: #DECDBB;
@@ -45,13 +46,17 @@ export const NavigationItem = styled.li`
   
 `;
 
-export const NavLink = styled.a`
-  
+export const NavLink = styled(Link)`
   text-decoration: none;
   font-size: 30px;
   font-family: "Roboto Flex", sans-serif;
   font-weight: 400;
   letter-spacing: 0%;
+  color: black;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const SearchBar = styled.input`

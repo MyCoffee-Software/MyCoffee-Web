@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextBlockContainer, Text } from './styles';
 
-function TextBlock({ children }) { // Recebe children como propriedade
+function TextBlock({ children }) {
   return (
     <TextBlockContainer>
-      <Text>{children}</Text> {/* Renderiza o children dentro do componente Text */}
+      <Text>{children}</Text>
     </TextBlockContainer>
   );
 }

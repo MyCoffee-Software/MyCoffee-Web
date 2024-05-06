@@ -7,7 +7,6 @@ import SignUp from "../pages/Signup";
 import AvailableProducts from "../pages/AvailableProducts";
 import Product from "../pages/Product";
 import Profile from "../pages/Profile";
-import { useMediaQuery } from "react-responsive";
 import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
 
@@ -20,12 +19,15 @@ const RoutesApp = () => {
           <Route exact path="/signin" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
 
+          {/* Com side bar */}
           <Route element={<LayoutWithSidebar />}>
             <Route path="/products" element={<AvailableProducts />} />
           </Route>
+
+          {/* Sem side bar */}
           <Route element={<LayoutWithoutSidebar />}>
-          <Route exact path="/product/:product_id" element={<Product />} />
-          <Route path="/about_us" element={<AboutUs />} />
+            <Route exact path="/product/:product_id" element={<Product />} />
+            <Route path="/about_us" element={<AboutUs />} />
             <Route path="/cart" element={<Cart />} />
             <Route exact path="/product/:product_id" element={<Product />} />
             <Route exact path="/profile" element={<Profile />} />
