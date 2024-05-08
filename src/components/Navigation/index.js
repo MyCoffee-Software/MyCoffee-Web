@@ -18,7 +18,9 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
           <C.NavigationItems className={C.NavigationContent}>
             <C.NavigationItem><C.NavLink>Início</C.NavLink></C.NavigationItem>
-            <C.NavigationItem><C.NavLink>Nossos Planos</C.NavLink></C.NavigationItem>
+            <C.NavigationItem>
+              <C.NavLink to="plans">Nossos Planos</C.NavLink>
+            </C.NavigationItem>
             <C.NavigationItem>
               <C.NavLink to="/about_us">Sobre Nós</C.NavLink>
             </C.NavigationItem>
