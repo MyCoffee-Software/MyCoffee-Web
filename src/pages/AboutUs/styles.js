@@ -13,3 +13,25 @@ export const BannerContainer = styled.div`
 
 export const BannerImage = styled.img`
   width: 100%; 
+  height: auto;
+  margin: 0 auto;
+  margin-top: -20px; /* Diminui o espaço acima do banner */
+  margin-bottom: 20px;
+`;
+
+export const TextsContainer = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
+export const LeftTextBlockContainer = styled.div`
+  flex: 3;
+  margin: 0 10px;
+  height: 100%; /* Adiciona altura para garantir que os elementos filhos se expandam */
+`;
+
+export const RightTextBlockContainer = styled.div`
+  flex: 1;
+  margin: 0 10px;
+  height: 100%; /* Adiciona altura para garantir que os elementos filhos se expandam */
+`;
