@@ -18,8 +18,12 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
           <C.NavigationItems className={C.NavigationContent}>
             <C.NavigationItem><C.NavLink>Início</C.NavLink></C.NavigationItem>
-            <C.NavigationItem><C.NavLink>Nossos Planos</C.NavLink></C.NavigationItem>
-            <C.NavigationItem><C.NavLink>Sobre Nós</C.NavLink></C.NavigationItem>
+            <C.NavigationItem>
+              <C.NavLink to="plans">Nossos Planos</C.NavLink>
+            </C.NavigationItem>
+            <C.NavigationItem>
+              <C.NavLink to="/about_us">Sobre Nós</C.NavLink>
+            </C.NavigationItem>
           </C.NavigationItems>
 
           <C.UserWrapper>
@@ -39,7 +43,7 @@ const Navigation = ({ onToggleSidebar, back }) => {
               </>
             )}
 
-            <Link>
+            <Link to="/cart">
               <C.StyledIcon icon={faCartShopping} size="50px" fixedWidth />
             </Link>
           </C.UserWrapper>
@@ -58,7 +62,9 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
           <C.Logo src={logo} />
 
-          <C.StyledIcon icon={faCartShopping} />
+          <Link to="/cart">
+            <C.StyledIcon icon={faCartShopping} />
+          </Link>
         </MediaQuery>
 
       </C.NavigationContent>

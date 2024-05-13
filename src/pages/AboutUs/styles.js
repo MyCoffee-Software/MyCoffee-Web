@@ -6,8 +6,9 @@ export const Container = styled.div`
 `;
 
 export const BannerContainer = styled.div`
-  max-width: 100%; /* Largura máxima do contêiner */
-  margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: -20px;
   flex: 1;
 `;
 
