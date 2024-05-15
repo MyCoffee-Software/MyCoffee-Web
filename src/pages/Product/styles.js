@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "../../styles/device";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const ProductWrapper = styled.div`
   display: flex;
@@ -104,4 +105,16 @@ export const BuyButton = styled.div`
     margin-left: 0;
     margin-bottom: 30px;
   }
+`;
+
+export const IconsContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+`;
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+    color: ${(props) => props.fontColor || 'black'};
+    
+    margin-left: 20px;
 `;
