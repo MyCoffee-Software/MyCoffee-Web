@@ -3,8 +3,11 @@ import { useParams } from 'react-router-dom';
 import * as C from "./styles";
 import QuantitySelector from '../../components/QuantityPicker';
 import MediaQuery from 'react-responsive';
+import useAuth from '../../hooks/useAuth';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
+  const { user } = useAuth();
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
@@ -37,6 +40,13 @@ const Product = () => {
           </C.ImageContainer>
 
           <C.DetailsContainer>
+            {user.role === "admin" && (
+              <C.IconsContainer>
+                <C.StyledIcon icon={faEdit} size='lg' />
+                <C.StyledIcon icon={faTrash} size='lg' fontColor='red' />
+              </C.IconsContainer>
+            )}
+
             <C.Label fontSize="24px">{product.title}</C.Label>
             <C.line />
             <C.Label fontSize="22px" fontColor="red">R$ {product.price}</C.Label>
@@ -55,6 +65,14 @@ const Product = () => {
           </C.ImageContainer>
 
           <C.DetailsContainer>
+            {user.role === "admin" && (
+              <C.IconsContainer>
+                <C.StyledIcon icon={faEdit} size='lg' />
+                <C.StyledIcon icon={faTrash} size='lg' fontColor='red' />
+              </C.IconsContainer>
+            )}
+
+
             <C.Label fontSize="22px" fontColor="red">R$ {product.price}</C.Label>
             <C.Label fontSize="24px">{product.title}</C.Label>
             <C.line />
