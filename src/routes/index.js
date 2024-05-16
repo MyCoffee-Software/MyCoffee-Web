@@ -10,6 +10,8 @@ import Profile from "../pages/Profile";
 import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
 import Plan from "../pages/Plan";
+import Dashboard from "../pages/Dashboard";
+import LayoutDashboard from "../components/Layouts/LayoutDashboard";
 
 
 const RoutesApp = () => {
@@ -33,6 +35,12 @@ const RoutesApp = () => {
             <Route exact path="/product/:product_id" element={<Product />} />
             <Route exact path="/profile" element={<Profile />} />
             <Route exact path="/plans" element={<Plan />} />
+          </Route>
+
+          {/* Dashboard */}
+          <Route element={<LayoutDashboard />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/:param" element={<Dashboard />} />
           </Route>
         </Routes>
       </Fragment>
