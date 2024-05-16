@@ -23,11 +23,17 @@ export const TextsContainer = styled.div`
 `;
 
 export const LeftTextBlockContainer = styled.div`
-  flex: 1;
-  margin-right: 10px;
+  flex: 3;
+  text-align: justify;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 26px;
 `;
 
 export const RightTextBlockContainer = styled.div`
   flex: 1;
-  margin-left: 10px;
+  text-align: justify;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 22px
 `;

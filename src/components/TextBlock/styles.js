@@ -5,7 +5,7 @@ export const TextBlockContainer = styled.div`
 `;
 
 export const Text = styled.p`
-  font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.2;
   color: #333;
+  font-weight: 600;
 `;
