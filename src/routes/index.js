@@ -12,6 +12,10 @@ import Cart from "../pages/Cart";
 import Plan from "../pages/Plan";
 import Home from "../pages/Home";
 
+import Dashboard from "../pages/Dashboard";
+import LayoutDashboard from "../components/Layouts/LayoutDashboard";
+import ProductsDashboard from "../pages/Dashboard/Products";
+
 const RoutesApp = () => {
   return (
     <BrowserRouter>
@@ -35,6 +39,19 @@ const RoutesApp = () => {
             <Route exact path="/product/:product_id" element={<Product />} />
             <Route exact path="/profile" element={<Profile />} />
             <Route exact path="/plans" element={<Plan />} />
+          </Route>
+
+          {/* Dashboard */}
+          <Route element={<LayoutDashboard />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/dashboard/products_dashboard"
+              element={<ProductsDashboard />}
+            />
+            <Route
+              path="/dashboard/product_edit/:product_id"
+              element={<ProductsDashboard />}
+            />
           </Route>
         </Routes>
       </Fragment>
