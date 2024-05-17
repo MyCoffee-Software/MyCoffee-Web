@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
 import logo from "../../assets/iconeCafe.svg";
-import { faBars, faCartShopping, faCircleUser, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCartShopping,
+  faCircleUser,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 import ProfileMenu from "../ProfileMenu";
 
@@ -17,7 +22,9 @@ const Navigation = ({ onToggleSidebar, back }) => {
           <C.Logo src={logo} />
 
           <C.NavigationItems className={C.NavigationContent}>
-            <C.NavigationItem><C.NavLink>Início</C.NavLink></C.NavigationItem>
+            <C.NavigationItem>
+              <C.NavLink to="home">Início</C.NavLink>
+            </C.NavigationItem>
             <C.NavigationItem>
               <C.NavLink to="plans">Nossos Planos</C.NavLink>
             </C.NavigationItem>
@@ -66,7 +73,6 @@ const Navigation = ({ onToggleSidebar, back }) => {
             <C.StyledIcon icon={faCartShopping} />
           </Link>
         </MediaQuery>
-
       </C.NavigationContent>
     </C.NavigationWrapper>
   );

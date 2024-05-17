@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import ProductCard from "../../components/Cards/ProductCard";
 import * as C from "./styles";
 
@@ -12,7 +12,7 @@ function AvailableProducts() {
         const data = await response.json();
         setProducts(data);
       } catch (e) {
-        console.error("Error")
+        console.error("Error");
       }
     };
 
@@ -28,6 +28,6 @@ function AvailableProducts() {
       ))}
     </C.ProductsWrapper>
   );
-};
+}
 
 export default AvailableProducts;
