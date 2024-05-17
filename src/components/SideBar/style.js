@@ -90,3 +90,11 @@ export const Label = styled.label`
   margin-left: 10px;
   
 `;
+
+export const UserIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px black solid;
+  margin-right: 10px;
+`;

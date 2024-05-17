@@ -27,12 +27,16 @@ export const TextsContainer = styled.div`
 
 export const LeftTextBlockContainer = styled.div`
   flex: 3;
-  margin: 0 10px;
-  height: 100%; /* Adiciona altura para garantir que os elementos filhos se expandam */
+  text-align: justify;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 26px;
 `;
 
 export const RightTextBlockContainer = styled.div`
   flex: 1;
-  margin: 0 10px;
-  height: 100%; /* Adiciona altura para garantir que os elementos filhos se expandam */
+  text-align: justify;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 22px
 `;

@@ -28,7 +28,9 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
             <C.MobileContent>
               {user ? (
                 <>
-                  <C.StyledIcon icon={faUserCircle} size="50px" />
+                  <Link to="profile">
+                    <C.UserIcon src={user.avatar}/>
+                  </Link>
                   <C.Label>{user.name}</C.Label>
                 </>
               ) : (
