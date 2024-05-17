@@ -40,3 +40,25 @@ export const RightTextBlockContainer = styled.div`
   margin-left: 20px;
   font-size: 22px
 `;
+
+export const FounderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+`;
+
+export const Founder = styled.div`
+  flex: 1;
+  font-size: 16px;
+  padding: 15px;
+`;
+
+export const FounderImage = styled.img`
+  width: 150px;
+  height: 150px;
+  font-weight: 800;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin: 0 20px;
+`;
