@@ -10,7 +10,7 @@ import Profile from "../pages/Profile";
 import AboutUs from "../pages/AboutUs";
 import Cart from "../pages/Cart";
 import Plan from "../pages/Plan";
-
+import Home from "../pages/Home";
 
 const RoutesApp = () => {
   return (
@@ -27,6 +27,8 @@ const RoutesApp = () => {
 
           {/* Sem side bar */}
           <Route element={<LayoutWithoutSidebar />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route exact path="/product/:product_id" element={<Product />} />
             <Route path="/about_us" element={<AboutUs />} />
             <Route path="/cart" element={<Cart />} />
