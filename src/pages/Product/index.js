@@ -40,7 +40,7 @@ const Product = () => {
           </C.ImageContainer>
 
           <C.DetailsContainer>
-            {user.role === "admin" && (
+            {user?.role === "admin" && (
               <C.IconsContainer>
                 <C.StyledIcon icon={faEdit} size='lg' />
                 <C.StyledIcon icon={faTrash} size='lg' fontColor='red' />
@@ -65,7 +65,7 @@ const Product = () => {
           </C.ImageContainer>
 
           <C.DetailsContainer>
-            {user.role === "admin" && (
+            {user?.role === "admin" && (
               <C.IconsContainer>
                 <C.StyledIcon icon={faEdit} size='lg' />
                 <C.StyledIcon icon={faTrash} size='lg' fontColor='red' />
