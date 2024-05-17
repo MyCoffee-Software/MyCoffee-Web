@@ -55,6 +55,7 @@ export const MobileSidebarWrapper = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 `;
 
 export const MobileUserWrapper = styled.div`
@@ -72,6 +73,7 @@ export const MobileContent = styled.div`
 
 export const Aside = styled.aside`
   position: fixed;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: ${(props) => (props.isOpenn ? "250px" : "0")};

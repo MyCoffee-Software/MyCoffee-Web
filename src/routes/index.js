@@ -12,6 +12,7 @@ import Cart from "../pages/Cart";
 import Plan from "../pages/Plan";
 import Dashboard from "../pages/Dashboard";
 import LayoutDashboard from "../components/Layouts/LayoutDashboard";
+import ProductsDashboard from "../pages/Dashboard/Products";
 
 
 const RoutesApp = () => {
@@ -29,7 +30,6 @@ const RoutesApp = () => {
 
           {/* Sem side bar */}
           <Route element={<LayoutWithoutSidebar />}>
-            <Route exact path="/product/:product_id" element={<Product />} />
             <Route path="/about_us" element={<AboutUs />} />
             <Route path="/cart" element={<Cart />} />
             <Route exact path="/product/:product_id" element={<Product />} />
@@ -40,7 +40,8 @@ const RoutesApp = () => {
           {/* Dashboard */}
           <Route element={<LayoutDashboard />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/:param" element={<Dashboard />} />
+            <Route path="/dashboard/products_dashboard" element={<ProductsDashboard />} />
+            <Route path="/dashboard/product_edit/:product_id" element={<ProductsDashboard />} />
           </Route>
         </Routes>
       </Fragment>
