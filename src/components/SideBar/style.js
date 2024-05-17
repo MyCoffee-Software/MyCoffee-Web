@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "../../styles/device";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Wrapper = styled.div`
@@ -8,7 +7,7 @@ export const Wrapper = styled.div`
 
 export const SidebarWrapper = styled.div`
   background-color: white;
-  border-right: 2px solid #DECDBB;
+  height: 100%;
   color: black;
   width: 200px;
   margin-top: -20px;
@@ -18,7 +17,7 @@ export const SidebarWrapper = styled.div`
 `;
 
 export const SidebarContent = styled.div`
-  padding-top: 20px;
+  padding-top: 50px;
   padding-right: 20px;
 `;
 
@@ -29,6 +28,7 @@ export const ContentButton = styled.div`
   padding: 10px;
   cursor: pointer;
   background-color: #DECDBB;
+  border: 2px solid #CDB499;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 
@@ -55,6 +55,7 @@ export const MobileSidebarWrapper = styled.div`
   margin: 0;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 `;
 
 export const MobileUserWrapper = styled.div`
@@ -72,6 +73,7 @@ export const MobileContent = styled.div`
 
 export const Aside = styled.aside`
   position: fixed;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: ${(props) => (props.isOpenn ? "250px" : "0")};
@@ -89,4 +91,12 @@ export const Label = styled.label`
   font-size: 14px;
   margin-left: 10px;
   
+`;
+
+export const UserIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px black solid;
+  margin-right: 10px;
 `;
