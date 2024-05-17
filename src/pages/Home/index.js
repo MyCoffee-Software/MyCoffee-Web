@@ -26,12 +26,13 @@ const Home = () => {
       <C.Image6 src={graoCafe} alt="Image" />
       <C.Image7 src={graoCafe} alt="Image" />
       <C.Image8 src={graoCafe} alt="Image" />
-      <C.Rectangle2 />
+
       <C.xicara src={xicara} alt="Image" />
       <C.texto1>
         Desperte sua paixão pelo café. Sabor, tradição e qualidade em cada
         xícara.
       </C.texto1>
+      <C.texto3>Produtos em Destaque</C.texto3>
       <C.Task />
       <C.Task2 src={graoCafe} alt="Task" />
 
@@ -58,6 +59,7 @@ const Home = () => {
       <Link to="/products">
         <C.capsula src={capsula} alt="Image" />
       </Link>
+
       <Link to="/products">
         <C.kit src={kit} alt="Image" />
       </Link>

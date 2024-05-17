@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
-import logo from "../../assets/iconeCafe.svg";
+import logo from "../../assets/iconeCafe.png";
 import {
   faBars,
   faCartShopping,

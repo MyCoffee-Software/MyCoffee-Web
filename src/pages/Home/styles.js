@@ -34,6 +34,19 @@ export const Rectangle = styled.div`
   width: 1440px;
 `;
 
+export const texto3 = styled.div`
+  color: #000000;
+  font-family: "Roboto Serif-Regular", Helvetica;
+  font-size: 50px;
+  font-weight: 400;
+  left: 444px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 649px;
+  width: 585px;
+`;
+
 export const Image2 = styled.img`
   height: 65px;
   left: 1090px;
@@ -51,7 +64,7 @@ export const Div = styled.div`
   left: 0;
   position: absolute;
   top: 626px;
-  width: 1440px;
+  width: 100vw;
 `;
 
 export const Image3 = styled.img`
@@ -108,16 +121,6 @@ export const Image8 = styled.img`
   width: 63px;
 `;
 
-export const Rectangle2 = styled.div`
-  background-color: #ffffff;
-  border-radius: 30px;
-  height: 30px;
-  left: 1028px;
-  position: absolute;
-  top: 50px;
-  width: 160px;
-`;
-
 export const xicara = styled.img`
   height: 340px;
   left: 1067px;
@@ -171,7 +174,7 @@ export const destaque1 = styled.img`
 export const destaque1texto = styled.div`
   color: #000000;
   font-family: "Scope One-Regular", Helvetica;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
   left: 308px;
   letter-spacing: 0;
@@ -232,7 +235,7 @@ export const destaque2 = styled.img`
 export const destaque2texto = styled.div`
   color: #000000;
   font-family: "Scope One-Regular", Helvetica;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
   left: 794px;
   letter-spacing: 0;
@@ -301,7 +304,7 @@ export const Task6 = styled.div`
 export const destaque3texto = styled.div`
   color: #000000;
   font-family: "Scope One-Regular", Helvetica;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
   left: 1266px;
   letter-spacing: 0;
@@ -397,6 +400,12 @@ export const capsula = styled.img`
   position: absolute;
   top: 163px;
   width: 200px;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+  }
 `;
 
 export const kit = styled.img`
@@ -406,6 +415,12 @@ export const kit = styled.img`
   position: absolute;
   top: 379px;
   width: 200px;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+  }
 `;
 
 export const TextWrapper13 = styled.div`
@@ -442,6 +457,12 @@ export const cafe = styled.img`
   position: absolute;
   top: 163px;
   width: 200px;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+  }
 `;
 
 export const promocoes = styled.img`
@@ -451,6 +472,12 @@ export const promocoes = styled.img`
   position: absolute;
   top: 380px;
   width: 200px;
+
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1); /* Aumenta o tamanho em 10% */
+  }
 `;
 
 export const texto2 = styled.div`

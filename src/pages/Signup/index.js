@@ -1,29 +1,35 @@
-import React, { useState } from 'react';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import React, { useState } from "react";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 import * as C from "./styles";
-import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../assets/iconeCafe.svg'
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/iconeCafe.png";
 
 const SignIn = () => {
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignUp = () => {
-
-  }
+  const handleSignUp = () => {};
 
   return (
     <C.Container>
       <C.LogoHalf>
-        <C.Logo src={logo} alt='MyCoffee Logo' />
+        <C.Logo src={logo} alt="MyCoffee Logo" />
       </C.LogoHalf>
 
       <C.ContentHalf>
         <C.Content>
-          <C.Label fontSize="40px" mobileFontSize="24px" fontColor="#616161" fontWeight="700"> Crie sua conta </C.Label>
+          <C.Label
+            fontSize="40px"
+            mobileFontSize="24px"
+            fontColor="#616161"
+            fontWeight="700"
+          >
+            {" "}
+            Crie sua conta{" "}
+          </C.Label>
           <C.LabelContent>
             <C.Label> Nome </C.Label>
             <Input
@@ -55,13 +61,12 @@ const SignIn = () => {
           <Button Text="Cadastrar" onClick={handleSignUp} />
 
           <C.Label>
-            Voltar para o
-            <Link to="/signin">&nbsp;Login</Link>
+            Voltar para o<Link to="/signin">&nbsp;Login</Link>
           </C.Label>
         </C.Content>
       </C.ContentHalf>
     </C.Container>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

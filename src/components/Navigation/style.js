@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 export const NavigationWrapper = styled.nav`
-  background-color: #DECDBB;
+  background-color: #decdbb;
   color: black;
   height: 80px;
   width: 100%;
   margin-bottom: 20px;
-  border-bottom: 2px solid #4A0404;
+  border-bottom: 2px solid #4a0404;
 `;
 
 export const NavigationContent = styled.div`
@@ -21,15 +21,15 @@ export const NavigationContent = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: ${(props) => props.height || '70px'};
-  width: ${(props) => props.width || '70px'};
+  height: ${(props) => props.height || "70px"};
+  width: ${(props) => props.width || "70px"};
 
   margin: 0;
 `;
 
 export const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: ${(props) => props.size || '32px'};
-  
+  font-size: ${(props) => props.size || "32px"};
+
   color: black;
 `;
 
@@ -43,7 +43,6 @@ export const NavigationItems = styled.ul`
 
 export const NavigationItem = styled.li`
   margin-right: 20px;
-  
 `;
 
 export const NavLink = styled(Link)`
@@ -53,14 +52,16 @@ export const NavLink = styled(Link)`
   font-weight: 400;
   letter-spacing: 0%;
   color: black;
+  transition: color 0.2s ease;
 
   &:hover {
     text-decoration: underline;
+    color: #a54f00;
   }
 `;
 
 export const SearchBar = styled.input`
-margin-right: 20px;
+  margin-right: 20px;
   padding: 8px;
   border-radius: 30px;
   border: none;
