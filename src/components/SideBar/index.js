@@ -5,7 +5,7 @@ import MediaQuery from "react-responsive";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 
-const Sidebar = ({ isOpen, onToggleSidebar }) => {
+const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
   const { user } = useAuth();
   const sidebarRef = useRef();
 
@@ -14,10 +14,23 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
       <MediaQuery minWidth={1280}>
         <C.SidebarWrapper>
           <C.SidebarContent>
-            <C.ContentButton>Cafés</C.ContentButton>
-            <C.ContentButton>Cápsulas</C.ContentButton>
-            <C.ContentButton>Kits</C.ContentButton>
-            <C.ContentButton>Promoções</C.ContentButton>
+            {!dashboard ? (
+              <>
+                <C.ContentButton>Cafés</C.ContentButton>
+                <C.ContentButton>Cápsulas</C.ContentButton>
+                <C.ContentButton>Kits</C.ContentButton>
+                <C.ContentButton>Promoções</C.ContentButton>
+              </>
+            ) : (
+              <>
+                <Link to={'/dashboard/products_dashboard'} >
+                  <C.ContentButton>Produtos</C.ContentButton>
+                </Link>
+                <C.ContentButton>Categorias</C.ContentButton>
+                <C.ContentButton>Usuários</C.ContentButton>
+                <C.ContentButton>Relatórios</C.ContentButton>
+              </>
+            )}
           </C.SidebarContent>
         </C.SidebarWrapper>
       </MediaQuery>
@@ -29,7 +42,7 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
               {user ? (
                 <>
                   <Link to="profile">
-                    <C.UserIcon src={user.avatar}/>
+                    <C.UserIcon src={user.avatar} />
                   </Link>
                   <C.Label>{user.name}</C.Label>
                 </>
@@ -46,10 +59,23 @@ const Sidebar = ({ isOpen, onToggleSidebar }) => {
           </C.MobileUserWrapper>
 
           <C.SidebarContent>
-            <C.ContentButton>Cafés</C.ContentButton>
-            <C.ContentButton>Cápsulas</C.ContentButton>
-            <C.ContentButton>Kits</C.ContentButton>
-            <C.ContentButton>Promoções</C.ContentButton>
+            {!dashboard ? (
+              <>
+                <C.ContentButton>Cafés</C.ContentButton>
+                <C.ContentButton>Cápsulas</C.ContentButton>
+                <C.ContentButton>Kits</C.ContentButton>
+                <C.ContentButton>Promoções</C.ContentButton>
+              </>
+            ) : (
+              <>
+                <Link to={'/dashboard/products_dashboard'} onClick={onToggleSidebar}>
+                  <C.ContentButton>Produtos</C.ContentButton>
+                </Link>
+                <C.ContentButton>Categorias</C.ContentButton>
+                <C.ContentButton>Usuários</C.ContentButton>
+                <C.ContentButton>Relatórios</C.ContentButton>
+              </>
+            )}
           </C.SidebarContent>
         </C.MobileSidebarWrapper>
 

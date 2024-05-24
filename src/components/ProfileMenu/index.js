@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const ProfileMenu = ( { userImage } ) => {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef();
   const navigate = useNavigate();
@@ -45,6 +45,11 @@ const ProfileMenu = ( { userImage } ) => {
 
       <C.DropdownContent show={showDropdown}>
         <C.MenuItem to="/profile">Perfil</C.MenuItem>
+
+        {user?.role === "admin" && (
+          <C.MenuItem to="/dashboard">Dashboard</C.MenuItem>
+        )}
+
         <C.MenuItem to="/products" onClick={handleLogout} >Sair</C.MenuItem>
       </C.DropdownContent>
     </C.DropdownMenu>

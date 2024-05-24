@@ -13,13 +13,16 @@ export const BannerContainer = styled.div`
 `;
 
 export const BannerImage = styled.img`
-  width: 100%;
+  width: 100%; 
+  height: auto;
+  margin: 0 auto;
+  margin-top: -20px; /* Diminui o espaço acima do banner */
+  margin-bottom: 20px;
 `;
 
 export const TextsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex: 1;
 `;
 
 export const LeftTextBlockContainer = styled.div`

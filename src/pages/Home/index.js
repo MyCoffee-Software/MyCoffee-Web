@@ -1,7 +1,7 @@
 import React from "react";
 import * as C from "./styles";
 import { Link } from "react-router-dom";
-import ProductCard from "../../components/Cards/ProductCard";
+
 
 import destaque1 from "../../assets/destaque1.svg";
 import destaque2 from "../../assets/destaque2.svg";
@@ -26,7 +26,6 @@ const Home = () => {
       <C.Image6 src={graoCafe} alt="Image" />
       <C.Image7 src={graoCafe} alt="Image" />
       <C.Image8 src={graoCafe} alt="Image" />
-
       <C.xicara src={xicara} alt="Image" />
       <C.texto1>
         Desperte sua paixão pelo café. Sabor, tradição e qualidade em cada
@@ -59,7 +58,6 @@ const Home = () => {
       <Link to="/products">
         <C.capsula src={capsula} alt="Image" />
       </Link>
-
       <Link to="/products">
         <C.kit src={kit} alt="Image" />
       </Link>
