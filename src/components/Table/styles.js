@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const Title = styled.div`
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
+  font-weight: bold;
   margin-bottom: 10px;
 `; 
 
