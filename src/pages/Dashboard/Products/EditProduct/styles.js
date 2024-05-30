@@ -12,6 +12,12 @@ export const Title = styled.span`
   font-weight: bold;
 `;
 
+export const ProductImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+`;
+
 export const ProductImage = styled.img`
   width: 200px;
   height: 200px;
@@ -19,16 +25,22 @@ export const ProductImage = styled.img`
 
 export const ProductInfoWrapper = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   margin-top: 40px;
   width: 90%;
-  background-color: blue;
 `;
 
 export const ProductInfoColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200%;
+  width: 100%;
   padding: 0 10px;
+`;
+
+export const ProductInfoRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
 `;
