@@ -14,7 +14,8 @@ import Home from "../pages/Home";
 
 import Dashboard from "../pages/Dashboard";
 import LayoutDashboard from "../components/Layouts/LayoutDashboard";
-import ProductsDashboard from "../pages/Dashboard/Products";
+import ProductsDashboard from "../pages/Dashboard/Products/ListProducts";
+import EditProduct from "../pages/Dashboard/Products/EditProduct";
 
 const RoutesApp = () => {
   return (
@@ -44,14 +45,9 @@ const RoutesApp = () => {
           {/* Dashboard */}
           <Route element={<LayoutDashboard />}>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route
-              path="/dashboard/products_dashboard"
-              element={<ProductsDashboard />}
-            />
-            <Route
-              path="/dashboard/product_edit/:product_id"
-              element={<ProductsDashboard />}
-            />
+            <Route path="/dashboard/products_dashboard" element={<ProductsDashboard />} />
+            <Route path="/dashboard/product_edit/:product_id" element={<EditProduct />} />
+            <Route path="/dashboard/product_edit" element={<EditProduct />} />
           </Route>
         </Routes>
       </Fragment>
