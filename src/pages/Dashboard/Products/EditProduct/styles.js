@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../../styles/device";
 
 export const ProductContainer = styled.div`
   display: flex;
@@ -28,6 +29,11 @@ export const ProductInfoWrapper = styled.div`
   justify-content: center;
   margin-top: 40px;
   width: 90%;
+
+  @media ${device.md} {
+    margin-left: 0px;
+    flex-direction: column;
+  }
 `;
 
 export const ProductInfoColumn = styled.div`
@@ -41,6 +47,6 @@ export const ProductInfoRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   gap: 20px;
 `;

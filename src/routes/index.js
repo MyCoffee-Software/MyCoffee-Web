@@ -47,6 +47,7 @@ const RoutesApp = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/products_dashboard" element={<ProductsDashboard />} />
             <Route path="/dashboard/product_edit/:product_id" element={<EditProduct />} />
+            <Route path="/dashboard/product_edit" element={<EditProduct />} />
           </Route>
         </Routes>
       </Fragment>
