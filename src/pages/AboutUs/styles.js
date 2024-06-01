@@ -16,7 +16,6 @@ export const BannerImage = styled.img`
   width: 100%; 
   height: auto;
   margin: 0 auto;
-  margin-top: -20px; /* Diminui o espaço acima do banner */
   margin-bottom: 20px;
 `;
 

@@ -8,6 +8,7 @@ import AvailableProducts from "../pages/AvailableProducts";
 import Product from "../pages/Product";
 import Profile from "../pages/Profile";
 import AboutUs from "../pages/AboutUs";
+import Reports from "../pages/Reports";
 import Cart from "../pages/Cart";
 import Plan from "../pages/Plan";
 import Home from "../pages/Home";
@@ -28,6 +29,7 @@ const RoutesApp = () => {
           {/* Com side bar */}
           <Route element={<LayoutWithSidebar />}>
             <Route path="/products" element={<AvailableProducts />} />
+            <Route path="/reports" element={<Reports />} />
           </Route>
 
           {/* Sem side bar */}
