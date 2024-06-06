@@ -59,6 +59,20 @@ export const AuthProvider = ({ children }) => {
       const { access_token, refresh_token } = await response.json();
       setToken(access_token);
       localStorage.setItem("user_token", access_token);
+
+      const profileResponse = await fetch('https://api.escuelajs.co/api/v1/auth/profile', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${access_token}`
+        },
+      });
+
+      if (!profileResponse.ok) {
+        throw new Error("Erro ao obter informações do usuário");
+      }
+
+      const userProfile = await profileResponse.json();
+      setUser(userProfile);
     } catch (error) {
       console.error("Erro ao fazer login:", error.message);
       throw error;
