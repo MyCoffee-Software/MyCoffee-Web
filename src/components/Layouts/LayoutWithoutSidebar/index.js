@@ -2,10 +2,10 @@ import React from 'react';
 import Navigation from "../../Navigation"
 import { Outlet } from 'react-router-dom';
 
-const LayoutWithoutSidebar = () => {
+const LayoutWithoutSidebar = ({ url }) => {
   return (
     <>
-      <Navigation back={true}/>
+      <Navigation back={url}/>
       <div>
         <Outlet/>
       </div>

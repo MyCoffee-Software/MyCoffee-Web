@@ -17,6 +17,7 @@ import Dashboard from "../pages/Dashboard";
 import LayoutDashboard from "../components/Layouts/LayoutDashboard";
 import ProductsDashboard from "../pages/Dashboard/Products/ListProducts";
 import EditProduct from "../pages/Dashboard/Products/EditProduct";
+import LayoutDashboardWithoutSidebar from "../components/Layouts/LayoutDashboardWithoutDashboard";
 
 const RoutesApp = () => {
   return (
@@ -33,7 +34,7 @@ const RoutesApp = () => {
           </Route>
 
           {/* Sem side bar */}
-          <Route element={<LayoutWithoutSidebar />}>
+          <Route element={<LayoutWithoutSidebar url={"/products"}/>}>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route exact path="/product/:product_id" element={<Product />} />
@@ -47,7 +48,14 @@ const RoutesApp = () => {
           {/* Dashboard */}
           <Route element={<LayoutDashboard />}>
             <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+
+          {/* Dashboard sem sidebar */}
+          <Route element={<LayoutDashboardWithoutSidebar url={"/dashboard"}/>}>
             <Route path="/dashboard/products_dashboard" element={<ProductsDashboard />} />
+          </Route>
+
+          <Route element={<LayoutDashboardWithoutSidebar url={"/dashboard/products_dashboard"}/>}>
             <Route path="/dashboard/product_edit/:product_id" element={<EditProduct />} />
             <Route path="/dashboard/product_edit" element={<EditProduct />} />
           </Route>

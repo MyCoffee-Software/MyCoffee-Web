@@ -58,7 +58,7 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
         <MediaQuery maxWidth={1279}>
           {back ? (
-            <Link to={"/products"}>
+            <Link to={back}>
               <C.StyledIcon icon={faArrowLeft} />
             </Link>
           ) : (
