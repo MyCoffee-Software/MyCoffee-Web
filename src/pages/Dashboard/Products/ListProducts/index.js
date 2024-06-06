@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import * as C from './styles';
 import Table from '../../../../components/Table';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/ReactToastify.css';
 import MediaQuery from 'react-responsive';
 
 const ProductsDashboard = () => {
+  const notify = (msg) => toast(msg);
   const [products, setProducts] = useState([]);
   
   const handleDelete = (row) => {
-    alert(`Excluir: ${row.title}`);
-  }
+    toast.success('deletado', {
+      theme: "colored",
+      });
+  };
 
   const columns = [
     {
@@ -105,18 +109,21 @@ const ProductsDashboard = () => {
   }, []);
 
   return (
-    <C.TableContainer>
-      <MediaQuery minWidth={900}>
-        <Table  title="Produtos" 
-                cols={columns} 
-                data={products}/>
-      </MediaQuery>
-      <MediaQuery maxWidth={899}>
-        <Table  title="Produtos" 
-                cols={mobileColumns} 
-                data={products}/>
-      </MediaQuery>
-    </C.TableContainer>
+    <>
+      <C.TableContainer>
+        <MediaQuery minWidth={900}>
+          <Table  title="Produtos" 
+                  cols={columns} 
+                  data={products}/>
+        </MediaQuery>
+        <MediaQuery maxWidth={899}>
+          <Table  title="Produtos" 
+                  cols={mobileColumns} 
+                  data={products}/>
+        </MediaQuery>
+      </C.TableContainer>
+      <ToastContainer />
+    </>
   )
 }
 
