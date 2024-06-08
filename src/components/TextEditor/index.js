@@ -34,7 +34,7 @@ const CustomToolbar = () => (
       <option value="center"></option>
       <option value="justify"></option>
       <option value="right"></option>
-      
+
     </select>
     <button className="ql-link"></button>
     <button className="ql-clean"></button>
@@ -51,24 +51,18 @@ const formats = [
   'header', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'align', 'link'
 ];
 
-const TextEditor = ({ edit, content, setContent }) => {
+const TextEditor = ({ content, setContent }) => {
   return (
     <C.TextContainer>
-      {edit ? (
-        <>
-          <CustomToolbar />
-          <ReactQuill
-            theme="snow"
-            value={content}
-            onChange={setContent}
-            modules={modules}
-            formats={formats}
-          />
-        </>
-      ) : (
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      )}
-    </C.TextContainer>
+      <CustomToolbar />
+      <ReactQuill
+        theme="snow"
+        value={content}
+        onChange={setContent}
+        modules={modules}
+        formats={formats}
+      />
+    </C.TextContainer >
   )
 }
 
