@@ -14,7 +14,9 @@ const SignIn = () => {
   const [password, setPasword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    if (event) event.preventDefault();
+
     if (!email | !password) {
       setError("Preencha todos os campos!");
       return;
@@ -23,7 +25,7 @@ const SignIn = () => {
     try {
       await login(email, password);
       setUser(await getUserData());
-      navigate("/products");
+      navigate("/home");
     } catch (error) {
       setError(error.message);
     }
@@ -65,7 +67,8 @@ const SignIn = () => {
             Faça seu login{" "}
           </C.Label>
 
-          <C.LabelContent>
+
+          <C.LabelContent onSubmit={handleLogin}>
             <C.Label> Email </C.Label>
             <Input
               type="email"
@@ -80,12 +83,14 @@ const SignIn = () => {
               placeholder="Digite sua senha"
               value={password}
               onChange={(e) => [setPasword(e.target.value), setError("")]}
+              onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
             />
           </C.LabelContent>
 
+
           <C.Label fontColor="#ff0000">{error}</C.Label>
 
-          <Button Text="Entrar" onClick={handleLogin} />
+          <Button Text="Entrar" onClick={handleLogin} type="submit" />
 
           <C.Label>
             Não tem conta?

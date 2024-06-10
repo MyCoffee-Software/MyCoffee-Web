@@ -61,7 +61,7 @@ export const Content = styled.div`
   padding: 20px;
 `;
 
-export const LabelContent = styled.div`
+export const LabelContent = styled.form`
   text-align: left;
   gap: 10px;
   display: flex;
