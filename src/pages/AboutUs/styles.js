@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -19,45 +20,65 @@ export const BannerImage = styled.img`
   margin-bottom: 20px;
 `;
 
-export const TextsContainer = styled.div`
+export const ContentContainer = styled.div`
   display: flex;
-  flex: 1;
-`;
-
-export const LeftTextBlockContainer = styled.div`
-  flex: 3;
-  text-align: justify;
-  margin-right: 20px;
-  margin-left: 20px;
-  font-size: 26px;
-`;
-
-export const RightTextBlockContainer = styled.div`
-  flex: 1;
-  text-align: justify;
-  margin-right: 20px;
-  margin-left: 20px;
-  font-size: 22px
-`;
-
-export const FounderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  
 `;
 
-export const Founder = styled.div`
-  flex: 1;
-  font-size: 16px;
-  padding: 15px;
-`;
-
-export const FounderImage = styled.img`
-  width: 150px;
-  height: 150px;
-  font-weight: 800;
-  border-radius: 50%;
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 10px;
-  margin: 0 20px;
+  width: 95%;
+`;
+
+export const IconButton = styled(FontAwesomeIcon)`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+export const TextContainer = styled.div`
+  width: 95%;
+  
+  .ql-size-10px {
+    font-size: 10px;
+  }
+  .ql-size-12px {
+    font-size: 12px;
+  }
+  .ql-size-14px {
+    font-size: 14px;
+  }
+  .ql-size-16px {
+    font-size: 16px;
+  }
+  .ql-size-18px {
+    font-size: 18px;
+  }
+  .ql-size-20px {
+    font-size: 20px;
+  }
+  .ql-size-24px {
+    font-size: 24px;
+  }
+  .ql-size-30px {
+    font-size: 30px;
+  }
+
+  .ql-editor {
+    text-align: left;
+  }
+  .ql-align-center {
+    text-align: center;
+  }
+  .ql-align-justify {
+    text-align: justify;
+  }
+  .ql-align-right {
+    text-align: right;
+  }
 `;

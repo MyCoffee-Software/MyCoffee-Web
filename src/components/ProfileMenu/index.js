@@ -50,7 +50,7 @@ const ProfileMenu = ( { userImage } ) => {
           <C.MenuItem to="/dashboard">Dashboard</C.MenuItem>
         )}
 
-        <C.MenuItem to="/products" onClick={handleLogout} >Sair</C.MenuItem>
+        <C.MenuItem to="/home" onClick={handleLogout} >Sair</C.MenuItem>
       </C.DropdownContent>
     </C.DropdownMenu>
   );
