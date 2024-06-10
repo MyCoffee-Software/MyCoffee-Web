@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -24,11 +25,24 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+  width: 100%;
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  width: 95%;
+`;
+
+export const IconButton = styled(FontAwesomeIcon)`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 export const TextContainer = styled.div`
-  width: 30%;
+  width: 95%;
   
   .ql-size-10px {
     font-size: 10px;
