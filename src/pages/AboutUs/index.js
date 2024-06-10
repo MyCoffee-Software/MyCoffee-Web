@@ -30,13 +30,15 @@ const AboutUs = () => {
     <>
       <C.Container>
         <C.ContentContainer>
-          <C.IconContainer>
-            { edit ? (
-              <C.IconButton onClick={handleSave} icon={faCheck} size='xl'/>
-            ) : (
-              <C.IconButton onClick={toggleEdit} icon={faCog} size='xl'/>
-            )}
-          </C.IconContainer>
+          {user?.role === "admin" && (  
+            <C.IconContainer>
+              { edit ? (
+                <C.IconButton onClick={handleSave} icon={faCheck} size='xl'/>
+              ) : (
+                <C.IconButton onClick={toggleEdit} icon={faCog} size='xl'/>
+              )}
+            </C.IconContainer>
+          )}
           <C.TextContainer>
             {user?.role === "admin" && edit ? (
               <TextEditor content={content} setContent={setContent} />
