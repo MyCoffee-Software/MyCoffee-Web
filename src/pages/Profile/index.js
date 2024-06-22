@@ -15,6 +15,7 @@ const Profile = () => {
 
   const handleEdit = () => {
     setEdit(!edit);
+    console.log(user);
   };
 
   const handleInputChange = (e) => {
