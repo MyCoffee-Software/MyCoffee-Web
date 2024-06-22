@@ -6,41 +6,50 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState(null);
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const userToken = localStorage.getItem("user_token")
-
     if (userToken) {
-      fetch('https://api.escuelajs.co/api/v1/auth/profile', {
+      fetchUser(userToken);
+    }
+  }, []);
+
+  const fetchUser = async (userToken) => {
+    try {
+      const response = await fetch(`${API_URL}/usuarios/perfil`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${userToken}`
         },
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Erro ao obter informações do usuário');
-          }
-          return response.json();
-        })
-        .then(user => {
-          setUser(user);
-        })
-        .catch(error => {
-          console.error('Erro ao obter informações do usuário:', error.message);
-        });
+      });
+      if (!response.ok) {
+        throw new Error('Erro ao obter informações do usuário');
+      }
+      const user = await response.json();
+
+      const usuario = {
+        name: user.usuario.nome,
+        email: user.usuario.email,
+        avatar: user.usuario.imagem,
+      }
+
+      setUser(usuario);
+    } catch (error) {
+      console.error('Erro ao obter informações do usuário:', error.message);
     }
-  }, []);
+  };
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('https://api.escuelajs.co/api/v1/auth/login', {
+      const response = await fetch(`${API_URL}/usuarios/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: username,
-          password: password,
+          senha: password,
         }),
       });
 
@@ -56,23 +65,10 @@ export const AuthProvider = ({ children }) => {
         throw new Error("Não foi possível fazer login");
       }
 
-      const { access_token, refresh_token } = await response.json();
-      setToken(access_token);
-      localStorage.setItem("user_token", access_token);
-
-      const profileResponse = await fetch('https://api.escuelajs.co/api/v1/auth/profile', {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${access_token}`
-        },
-      });
-
-      if (!profileResponse.ok) {
-        throw new Error("Erro ao obter informações do usuário");
-      }
-
-      const userProfile = await profileResponse.json();
-      setUser(userProfile);
+      const { token } = await response.json();
+      setToken(token);
+      localStorage.setItem("user_token", token);
+      await fetchUser(token);
     } catch (error) {
       console.error("Erro ao fazer login:", error.message);
       throw error;
@@ -93,7 +89,7 @@ export const AuthProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error('Erro ao atualizar os dados do usuário');
       }
-  
+
       return response.json();
     } catch (error) {
       console.error('Erro ao atualizar os dados do usuário:', error.message);
