@@ -15,6 +15,7 @@ import Dashboard from "../pages/Dashboard";
 import LayoutDashboard from "../components/Layouts/LayoutDashboard";
 import ProductsDashboard from "../pages/Dashboard/Products/ListProducts";
 import EditProduct from "../pages/Dashboard/Products/EditProduct";
+import CategoryDashboard from "../pages/Dashboard/Category/ListCategorys";
 
 const RoutesApp = () => {
   return (
@@ -48,6 +49,7 @@ const RoutesApp = () => {
 
           <Route element={<LayoutDashboard url="/dashboard"/>}>
             <Route path="/dashboard/products_dashboard" element={<ProductsDashboard />} />
+            <Route path="/dashboard/category_dashboard" element={<CategoryDashboard />} />
             <Route path="/dashboard/reports" element={<Reports />} />
           </Route>
 
