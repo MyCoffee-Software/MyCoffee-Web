@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from 'react-router-dom';
 import * as C from "./style";
 import MediaQuery from "react-responsive";
@@ -8,6 +8,21 @@ import useAuth from "../../hooks/useAuth";
 const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
   const { user } = useAuth();
   const sidebarRef = useRef();
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/categorias?limite=10&pagina=1`);
+        const data = await response.json();
+        setCategories(data);
+      } catch (e) {
+        console.error("Error");
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <C.Wrapper>
@@ -16,17 +31,19 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
           <C.SidebarContent>
             {!dashboard ? (
               <>
-                <C.ContentButton>Cafés</C.ContentButton>
-                <C.ContentButton>Cápsulas</C.ContentButton>
-                <C.ContentButton>Kits</C.ContentButton>
-                <C.ContentButton>Promoções</C.ContentButton>
+                {categories.map((category) => (
+                  <C.ContentButton>{ category.nome }</C.ContentButton>
+                ))}
               </>
             ) : (
               <>
                 <Link to={'/dashboard/products_dashboard'} >
                   <C.ContentButton>Produtos</C.ContentButton>
                 </Link>
-                <C.ContentButton>Categorias</C.ContentButton>
+
+                <Link to={'/dashboard/category_dashboard'}>
+                  <C.ContentButton>Categorias</C.ContentButton>
+                </Link>
                 <C.ContentButton>Usuários</C.ContentButton>
                 <C.ContentButton>Relatórios</C.ContentButton>
               </>
@@ -61,17 +78,19 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
           <C.SidebarContent>
             {!dashboard ? (
               <>
-                <C.ContentButton>Cafés</C.ContentButton>
-                <C.ContentButton>Cápsulas</C.ContentButton>
-                <C.ContentButton>Kits</C.ContentButton>
-                <C.ContentButton>Promoções</C.ContentButton>
+                {categories.map((category) => (
+                  <C.ContentButton>{ category.nome }</C.ContentButton>
+                ))}
               </>
             ) : (
               <>
                 <Link to={'/dashboard/products_dashboard'} onClick={onToggleSidebar}>
                   <C.ContentButton>Produtos</C.ContentButton>
                 </Link>
-                <C.ContentButton>Categorias</C.ContentButton>
+
+                <Link to={'/dashboard/category_dashboard'} onClick={onToggleSidebar}>
+                  <C.ContentButton>Categorias</C.ContentButton>
+                </Link>
                 <C.ContentButton>Usuários</C.ContentButton>
                 <C.ContentButton>Relatórios</C.ContentButton>
               </>
