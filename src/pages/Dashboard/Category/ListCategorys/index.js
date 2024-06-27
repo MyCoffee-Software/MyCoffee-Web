@@ -12,10 +12,24 @@ const CategoryDashboard = () => {
   const [editingId, setEditingId] = useState(null);
   const [editingName, setEditingName] = useState("");
 
-  const handleDelete = (row) => {
-    toast.success('deletado', {
-      theme: "colored",
-    });
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/categorias?id=${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao excluir categoria');
+      }
+      const updatedCategories = categories.filter(category => category.id !== id);
+      setCategories(updatedCategories);
+      toast.success('Categoria deletada com sucesso!', {
+        theme: "colored",
+      });
+    } catch (e) {
+      toast.error('Erro ao excluir a categoria');
+      console.error("Error:", e);
+    }
   };
 
   const handleEdit = (id, name) => {
@@ -27,7 +41,7 @@ const CategoryDashboard = () => {
     try {
       const name = editingName;
 
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/categorias/{id}?id=${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/categorias?id=${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +105,7 @@ const CategoryDashboard = () => {
               <FontAwesomeIcon icon={faEdit} />
             </button>
           )}
-          <button onClick={() => handleDelete(row)}>
+          <button onClick={() => handleDelete(row.id)}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </div>
@@ -143,7 +157,7 @@ const CategoryDashboard = () => {
               <FontAwesomeIcon icon={faEdit} />
             </button>
           )}
-          <button onClick={() => handleDelete(row)}>
+          <button onClick={() => handleDelete(row.id)}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </div>
