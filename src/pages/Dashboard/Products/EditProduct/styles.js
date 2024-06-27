@@ -8,6 +8,21 @@ export const ProductContainer = styled.div`
   justify-content: center;
 `;
 
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
 export const Title = styled.span`
   font-size: 35px;
   font-weight: bold;

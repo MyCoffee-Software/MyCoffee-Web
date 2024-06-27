@@ -153,59 +153,6 @@ const CategoryDashboard = () => {
     }
   ];
 
-  const mobileColumns = [
-    {
-      name: "ID",
-      selector: category => category.id,
-      sortable: true,
-      width: "50px",
-      grow: 1
-    },
-    {
-      name: "Nome",
-      selector: category => category.nome,
-      sortable: true,
-      width: "100px",
-      grow: 2,
-      cell: row => (
-        editingId === row.id ? (
-          <C.Input
-            inputWidth="90%"
-            type="text"
-            value={editingName}
-            onChange={(e) => setEditingName(e.target.value)}
-          />
-        ) : (
-          row.nome
-        )
-      )
-    },
-    {
-      name: "Ações",
-      cell: (row) => (
-        <div>
-          {editingId === row.id ? (
-            <C.Button onClick={() => handleSave(row.id)} >
-              <FontAwesomeIcon icon={faSave} />
-            </C.Button>
-          ) : (
-            <C.Button onClick={() => handleEdit(row.id, row.nome)} >
-              <FontAwesomeIcon icon={faEdit} />
-            </C.Button>
-          )}
-          <C.Button onClick={() => handleDelete(row.id)}>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </C.Button>
-        </div>
-      ),
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-      right: true,
-      grow: 1
-    }
-  ];
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {

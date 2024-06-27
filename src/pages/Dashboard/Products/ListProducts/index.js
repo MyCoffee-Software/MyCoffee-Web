@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react'
 import * as C from './styles';
 import Table from '../../../../components/Table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
 import MediaQuery from 'react-responsive';
 
 const ProductsDashboard = () => {
-  const notify = (msg) => toast(msg);
   const [products, setProducts] = useState([]);
-  
+
   const handleDelete = (row) => {
     toast.success('deletado', {
       theme: "colored",
-      });
+    });
   };
 
   const columns = [
@@ -22,7 +21,7 @@ const ProductsDashboard = () => {
       name: "ID",
       selector: products => products.id,
       sortable: true,
-      width: "120px",
+      width: "80px",
       grow: 1
     },
     {
@@ -42,12 +41,14 @@ const ProductsDashboard = () => {
       cell: (row) => (
         <div>
           <C.ActionLink to={`/dashboard/product_edit/${row.id}`}>
-            <FontAwesomeIcon icon={faEdit}/>
+            <C.Button>
+              <FontAwesomeIcon icon={faEdit} />
+            </C.Button>
           </C.ActionLink>
 
-          <button onClick={() => handleDelete(row)}>
-            <FontAwesomeIcon icon={faTrashAlt}/>
-          </button>
+          <C.Button onClick={() => handleDelete(row)}>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </C.Button>
         </div>
       ),
       ignoreRowClick: true,
@@ -70,20 +71,21 @@ const ProductsDashboard = () => {
       name: "Nome",
       selector: products => products.title,
       sortable: true,
-      width: "100px",
-      grow: 2
+      grow: 1
     },
     {
       name: "Ações",
       cell: (row) => (
         <div>
           <C.ActionLink to={`/dashboard/product_edit/${row.id}`}>
-            <FontAwesomeIcon icon={faEdit}/>
+            <C.Button>
+              <FontAwesomeIcon icon={faEdit} />
+            </C.Button>
           </C.ActionLink>
 
-          <button onClick={() => handleDelete(row)}>
-            <FontAwesomeIcon icon={faTrashAlt}/>
-          </button>
+          <C.Button onClick={() => handleDelete(row)}>
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </C.Button>
         </div>
       ),
       ignoreRowClick: true,
@@ -112,14 +114,25 @@ const ProductsDashboard = () => {
     <>
       <C.TableContainer>
         <MediaQuery minWidth={900}>
-          <Table  title="Produtos" 
-                  cols={columns} 
-                  data={products}/>
+          <C.ActionLink to={'/dashboard/product_edit/'}>
+            <C.Button>
+              <FontAwesomeIcon icon={faPlus} />
+            </C.Button>
+          </C.ActionLink>
+
+          <Table title="Produtos"
+            cols={columns}
+            data={products} />
         </MediaQuery>
         <MediaQuery maxWidth={899}>
-          <Table  title="Produtos" 
-                  cols={mobileColumns} 
-                  data={products}/>
+          <C.ActionLink to={'/dashboard/product_edit/'}>
+            <C.Button>
+              <FontAwesomeIcon icon={faPlus} />
+            </C.Button>
+          </C.ActionLink>
+          <Table title="Produtos"
+            cols={mobileColumns}
+            data={products} />
         </MediaQuery>
       </C.TableContainer>
       <ToastContainer />

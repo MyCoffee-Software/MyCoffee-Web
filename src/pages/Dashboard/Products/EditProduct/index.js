@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as C from "./styles"; 
+import * as C from "./styles";
 import InfoInput from '../../../../components/InfoInput';
 import Textarea from '../../../../components/Textarea';
 import Button from '../../../../components/Button';
+import { ActionLink } from '../ListProducts/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import MediaQuery from 'react-responsive';
+import { ToastContainer, toast } from 'react-toastify';
 
 const EditProduct = () => {
   const { product_id } = useParams();
@@ -51,41 +56,58 @@ const EditProduct = () => {
   };
 
   const handleSave = () => {
-    
-  }
-
-  const handleRegister = () => {
-
+    if (product_id) {
+      toast.success('Salvo', {
+        theme: "colored",
+      });
+      console.log(productData)
+    } else {
+      toast.success('Novo', {
+        theme: "colored",
+      });
+      console.log(productData)
+    }
   }
 
   return (
-    <C.ProductContainer>
-      <C.Title>Editar Produto</C.Title>
+    <>
+      <MediaQuery minWidth={1280}>
+        <ActionLink to={"/dashboard/products_dashboard"}>
+          <C.Button>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </C.Button>
+        </ActionLink>
+      </MediaQuery>
+      
+      <C.ProductContainer>
 
-      <C.ProductInfoWrapper>
-        <C.ProductInfoColumn>
-          <InfoInput title="Nome" name="title" inputInfo={productData.title} onChange={handleInputChange} />
-          <InfoInput title="Categoria" name="category" inputInfo={productData.category} onChange={handleInputChange} />
-          <InfoInput title="Marca" name="price" inputInfo={productData.price} onChange={handleInputChange} />
-          <Textarea title="Descrição" name="description" info={productData.description} onChange={handleInputChange}/>
-        </C.ProductInfoColumn>
+        <C.Title>Editar Produto</C.Title>
 
-        <C.ProductInfoColumn>
-          <C.ProductImageContainer>
-            <C.ProductImage src={productData.image}/>
-          </C.ProductImageContainer>
+        <C.ProductInfoWrapper>
+          <C.ProductInfoColumn>
+            <InfoInput title="Nome" name="title" inputInfo={productData.title} onChange={handleInputChange} />
+            <InfoInput title="Categoria" name="category" inputInfo={productData.category} onChange={handleInputChange} />
+            <InfoInput title="Marca" name="price" inputInfo={productData.price} onChange={handleInputChange} />
+            <Textarea title="Descrição" name="description" info={productData.description} onChange={handleInputChange} />
+          </C.ProductInfoColumn>
 
-          <C.ProductInfoRow>
-            <InfoInput title="Preço" name="price" inputInfo={productData.price} onChange={handleInputChange} />
-            <InfoInput title="Desconto" name="price" inputInfo={productData.price} onChange={handleInputChange} />
-          </C.ProductInfoRow>
-        </C.ProductInfoColumn>
-      </C.ProductInfoWrapper>
-      <C.ProductInfoRow>
-        <Button Text="Cadastrar" onClick={handleRegister}/>
-        <Button Text="Salvar" onClick={handleSave}/>
-      </C.ProductInfoRow>
-    </C.ProductContainer>
+          <C.ProductInfoColumn>
+            <C.ProductImageContainer>
+              <C.ProductImage src={productData.image} />
+            </C.ProductImageContainer>
+
+            <C.ProductInfoRow>
+              <InfoInput title="Preço" name="price" inputInfo={productData.price} onChange={handleInputChange} />
+              <InfoInput title="Desconto" name="price" inputInfo={productData.price} onChange={handleInputChange} />
+            </C.ProductInfoRow>
+          </C.ProductInfoColumn>
+        </C.ProductInfoWrapper>
+        <C.ProductInfoRow>
+          <Button Text="Salvar" onClick={() => handleSave()} />
+        </C.ProductInfoRow>
+      </C.ProductContainer>
+      <ToastContainer />
+    </>
   );
 };
 
