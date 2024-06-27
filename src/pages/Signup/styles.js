@@ -3,13 +3,13 @@ import { device } from "../../styles/device";
 
 export const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 170vh;
 
-  @media  ${device.sm} {
+  @media ${device.sm} {
     flex-direction: column;
   }
 
-  @media  ${device.md} {
+  @media ${device.md} {
     flex-direction: column;
   }
 `;
@@ -71,15 +71,14 @@ export const LabelContent = styled.div`
 `;
 
 export const Label = styled.label`
-  font-size: ${(props) => props.fontSize || '16px'};
-  color: ${(props) => props.fontColor || '#676767'};
-  font-weight: ${(props) => props.fontWeight || '500'};
+  font-size: ${(props) => props.fontSize || "16px"};
+  color: ${(props) => props.fontColor || "#676767"};
+  font-weight: ${(props) => props.fontWeight || "500"};
 
   font-family: "Inter", sans-serif;
   letter-spacing: 0%;
 
   @media ${device.sm} {
-    font-size: ${(props) => props.mobileFontSize || '12px'};
+    font-size: ${(props) => props.mobileFontSize || "12px"};
   }
-
 `;

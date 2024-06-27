@@ -4,14 +4,80 @@ import Button from "../../components/Button";
 import * as C from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/iconeCafe.png";
+import {
+  isValidCPF,
+  isValidEmail,
+  isValidMobilePhone,
+  formatCEP,
+  isValidCEP,
+} from "@brazilian-utils/brazilian-utils";
 
 const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [dataNascimento, setDataNascimento] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [rg, setRg] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cep, setCep] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [estado, setEstado] = useState("");
+  const [numero, setNumero] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignUp = () => {};
+  const handleSignUp = () => {
+    if (!isValidCPF(cpf)) {
+      setError("CPF inválido");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setError("Email inválido");
+      return;
+    }
+
+    if (!isValidMobilePhone(telefone)) {
+      setError("Telefone inválido");
+      return;
+    }
+
+    if (!isValidCEP(cep)) {
+      setError("CEP inválido");
+      return;
+    }
+  };
+
+  const handleCpfChange = (e) => {
+    const value = e.target.value;
+    setCpf(value);
+    setError("");
+  };
+
+  const handleCepChange = (e) => {
+    const value = e.target.value;
+    setCep(value);
+    if (value.length === 8) {
+      fetchCepData(value);
+    }
+  };
+
+  const fetchCepData = async (cep) => {
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      if (!response.ok) {
+        throw new Error("Erro ao buscar o CEP");
+      }
+      const data = await response.json();
+      setEndereco(data.logradouro);
+      setCidade(data.localidade);
+      setEstado(data.uf);
+    } catch (error) {
+      console.error("Erro ao buscar o CEP:", error);
+      setError("CEP não encontrado");
+    }
+  };
 
   return (
     <C.Container>
@@ -27,19 +93,18 @@ const SignIn = () => {
             fontColor="#616161"
             fontWeight="700"
           >
-            {" "}
-            Crie sua conta{" "}
+            Crie sua conta
           </C.Label>
           <C.LabelContent>
-            <C.Label> Nome </C.Label>
+            <C.Label>Nome</C.Label>
             <Input
-              type="email"
+              type="text"
               placeholder="Digite seu nome"
               value={name}
               onChange={(e) => [setName(e.target.value), setError("")]}
             />
 
-            <C.Label> Email </C.Label>
+            <C.Label>Email</C.Label>
             <Input
               type="email"
               placeholder="Digite seu E-mail"
@@ -47,12 +112,87 @@ const SignIn = () => {
               onChange={(e) => [setEmail(e.target.value), setError("")]}
             />
 
-            <C.Label> Senha </C.Label>
+            <C.Label>Senha</C.Label>
             <Input
               type="password"
               placeholder="Digite sua senha"
               value={senha}
               onChange={(e) => [setSenha(e.target.value), setError("")]}
+            />
+
+            <C.Label>Data de Nascimento</C.Label>
+            <Input
+              type="date"
+              placeholder="Digite sua data de nascimento"
+              value={dataNascimento}
+              onChange={(e) => [
+                setDataNascimento(e.target.value),
+                setError(""),
+              ]}
+            />
+
+            <C.Label>Telefone</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite seu telefone"
+              value={telefone}
+              onChange={(e) => [setTelefone(e.target.value), setError("")]}
+            />
+
+            <C.Label>RG</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite seu RG"
+              value={rg}
+              onChange={(e) => [setRg(e.target.value), setError("")]}
+            />
+
+            <C.Label>CPF</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite seu CPF"
+              value={cpf}
+              onChange={handleCpfChange}
+            />
+
+            <C.Label>CEP</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite seu CEP"
+              value={cep}
+              onChange={handleCepChange}
+            />
+            <C.Label>Estado</C.Label>
+            <Input
+              type="text"
+              placeholder="Estado"
+              value={estado}
+              onChange={(e) => [setEstado(e.target.value), setError("")]}
+              disabled
+            />
+
+            <C.Label>Endereço</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite seu endereço"
+              value={endereco}
+              onChange={(e) => [setEndereco(e.target.value), setError("")]}
+            />
+
+            <C.Label>Cidade</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite sua cidade"
+              value={cidade}
+              onChange={(e) => [setCidade(e.target.value), setError("")]}
+            />
+
+            <C.Label>Número</C.Label>
+            <Input
+              type="text"
+              placeholder="Digite o número"
+              value={numero}
+              onChange={(e) => [setNumero(e.target.value), setError("")]}
             />
           </C.LabelContent>
 
