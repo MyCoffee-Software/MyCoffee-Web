@@ -7,7 +7,7 @@ import { faCheck, faCog } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AboutUs = () => {
-  const { user } = useAuth();
+  const { user, permissions } = useAuth();
   const [content, setContent] = useState('');
   const [edit, setEdit] = useState(false);
 
@@ -30,7 +30,7 @@ const AboutUs = () => {
     <>
       <C.Container>
         <C.ContentContainer>
-          {user?.role === "admin" && (  
+          {permissions?.includes("Administrador") && (  
             <C.IconContainer>
               { edit ? (
                 <C.IconButton onClick={handleSave} icon={faCheck} size='xl'/>
@@ -40,7 +40,7 @@ const AboutUs = () => {
             </C.IconContainer>
           )}
           <C.TextContainer>
-            {user?.role === "admin" && edit ? (
+            {permissions?.includes("Administrador") && edit ? (
               <TextEditor content={content} setContent={setContent} />
             ) : (
               <div dangerouslySetInnerHTML={{ __html: sanitize(content) }} />
