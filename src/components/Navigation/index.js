@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
@@ -19,6 +19,20 @@ const Navigation = ({ onToggleSidebar, back }) => {
   const [showResults, setShowResults] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const searchTimeout = useRef(null);
+  const [userImage, setUserImage] = useState(null);
+
+  useEffect(() => {
+    if (user && user.imagem) {
+      const imageName = user.imagem.split('/').pop();
+      import(`../../assets/User/${imageName}`)
+        .then(imageModule => {
+          setUserImage(imageModule.default);
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageName}`, error);
+        });
+    }
+  }, [user]);
 
   const handleChange = (event) => {
     const searchTerm = event.target.value;
@@ -92,8 +106,8 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
             {user ? (
               <>
-                <ProfileMenu userImage={user.avatar} />
-                <C.Label>{user.name}</C.Label>
+                <ProfileMenu userImage={userImage} />
+                <C.Label>{user.nome}</C.Label>
               </>
             ) : (
               <>
