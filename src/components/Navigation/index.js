@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
@@ -14,20 +14,54 @@ import ProfileMenu from "../ProfileMenu";
 
 const Navigation = ({ onToggleSidebar, back }) => {
   const { user } = useAuth();
-  const [userImage, setUserImage] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const [noResults, setNoResults] = useState(false);
+  const searchTimeout = useRef(null);
 
-  useEffect(() => {
-    if (user && user.imagem) {
-      const imageName = user.imagem.split('/').pop();
-      import(`../../assets/User/${imageName}`)
-        .then(imageModule => {
-          setUserImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
+  const handleChange = (event) => {
+    const searchTerm = event.target.value;
+    setSearchTerm(searchTerm);
+
+    if (searchTimeout.current) {
+      clearTimeout(searchTimeout.current);
     }
-  }, [user]);
+
+    // Verifica se o comprimento do searchTerm é maior ou igual a 3
+    if (searchTerm.trim().length >= 3) {
+      searchTimeout.current = setTimeout(() => {
+        fetch(`https://fakestoreapi.com/products`)
+          .then((res) => res.json())
+          .then((json) => {
+            const filteredResults = json.filter(
+              (product) =>
+                product.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            if (filteredResults.length > 0) {
+              setSearchResults(filteredResults);
+              setShowResults(true);
+              setNoResults(false);
+            } else {
+              setSearchResults([]);
+              setShowResults(true);
+              setNoResults(true);
+            }
+          });
+      }, 300);
+    } else {
+      setSearchResults([]);
+      setShowResults(false);
+      setNoResults(false);
+    }
+  };
+
+  const handleBlur = () => {
+    if (searchTerm.trim() === "") {
+      setShowResults(false);
+      setNoResults(false);
+    }
+  };
 
   return (
     <C.NavigationWrapper>
@@ -48,12 +82,18 @@ const Navigation = ({ onToggleSidebar, back }) => {
           </C.NavigationItems>
 
           <C.UserWrapper>
-            <C.SearchBar />
+            <C.SearchBar
+              type="text"
+              placeholder="Buscar produto..."
+              value={searchTerm}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
 
             {user ? (
               <>
-                <ProfileMenu userImage={userImage} />
-                <C.Label>{user.nome}</C.Label>
+                <ProfileMenu userImage={user.avatar} />
+                <C.Label>{user.name}</C.Label>
               </>
             ) : (
               <>
@@ -67,6 +107,24 @@ const Navigation = ({ onToggleSidebar, back }) => {
             <Link to="/cart">
               <C.StyledIcon icon={faCartShopping} size="50px" fixedWidth />
             </Link>
+
+            <C.SearchResults show={showResults}>
+              {searchResults.length > 0 && (
+                <>
+                  <h3>Resultados da busca:</h3>
+                  <ul>
+                    {searchResults.map((product) => (
+                      <C.SearchResultItem key={product.id}>
+                        <Link to={`/product/${product.id}`}>
+                          {product.title}
+                        </Link>
+                      </C.SearchResultItem>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {noResults && <p>Nenhum resultado encontrado.</p>}
+            </C.SearchResults>
           </C.UserWrapper>
         </MediaQuery>
 

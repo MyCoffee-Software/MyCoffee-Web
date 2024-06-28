@@ -3,7 +3,7 @@ import { device } from "../../styles/device";
 
 export const Container = styled.div`
   display: flex;
-  height: 170vh;
+  height: 190vh;
 
   @media ${device.sm} {
     flex-direction: column;

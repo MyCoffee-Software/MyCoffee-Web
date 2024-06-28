@@ -9,6 +9,7 @@ export const NavigationWrapper = styled.nav`
   width: 100%;
   margin-bottom: 20px;
   border-bottom: 2px solid #4a0404;
+  position: relative; /* Adicionado para posicionamento relativo */
 `;
 
 export const NavigationContent = styled.div`
@@ -18,18 +19,17 @@ export const NavigationContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative; /* Adicionado para posicionamento relativo */
 `;
 
 export const Logo = styled.img`
   height: ${(props) => props.height || "70px"};
   width: ${(props) => props.width || "70px"};
-
   margin: 0;
 `;
 
 export const StyledIcon = styled(FontAwesomeIcon)`
   font-size: ${(props) => props.size || "32px"};
-
   color: black;
 `;
 
@@ -76,4 +76,36 @@ export const UserWrapper = styled.div`
 export const Label = styled.label`
   font-size: 16px;
   margin-right: 16px;
+`;
+
+export const SearchResults = styled.div`
+  position: absolute;
+  top: calc(100% + 10px);
+  left: calc(100% - 30%);
+  width: 30%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  display: ${(props) => (props.show ? "block" : "none")}; 
+`;
+
+export const SearchResultItem = styled.div`
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      text-decoration: underline;
+      color: #a54f00;
+    }
+  }
 `;
