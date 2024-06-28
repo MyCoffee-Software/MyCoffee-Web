@@ -4,9 +4,10 @@ import useAuth from '../../hooks/useAuth';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import InfoInput from '../../components/InfoInput';
 import Button from '../../components/Button';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, fetchUser } = useAuth();
   const [edit, setEdit] = useState(true);
   const [client, setClient] = useState(null);
   const [userData, setUserData] = useState({
@@ -73,31 +74,15 @@ const Profile = () => {
     }
   }, [user, client]);
 
-  const formatDateString = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    let month = (date.getMonth() + 1).toString();
-    let day = date.getDate().toString();
-
-    if (month.length === 1) {
-      month = '0' + month;
-    }
-    if (day.length === 1) {
-      day = '0' + day;
-    }
-
-    return `${year}-${month}-${day}`;
-  };
-
   const handleEdit = () => {
     setEdit(!edit);
   };
 
   const handleInputChange = (e) => {
-    const { name, inputInfo } = e.target;
+    const { name, value } = e.target;
     setUserData((prevInputData) => ({
       ...prevInputData,
-      [name]: inputInfo,
+      [name]: value,
     }));
   };
 
@@ -106,11 +91,44 @@ const Profile = () => {
   };
 
   const handleSave = async () => {
+    try {
+      console.log(userData);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/clientes?id=${user.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+        },
+        body: JSON.stringify({
+          cpf: userData.cpf,
+          telefone: userData.phone,
+          endereco: userData.address,
+          usuario: {
+            nomeCompleto: userData.name,
+            email: userData.email,
+            imagem: user.imagem
+          }
+        }),
+      });
 
+      if (!response.ok) {
+        throw new Error('Erro ao atualizar usuário');
+      }
+
+      setEdit(false);
+      fetchUser(localStorage.getItem("user_token"));
+      toast.success('Usuário atualizado com sucesso!', {
+        theme: "colored",
+      });
+    } catch (e) {
+      toast.error('Erro ao atualizar usuário');
+      console.error("Error:", e);
+    }
   }
 
   return (
     <C.ProfileContainer>
+      <ToastContainer/>
       <C.Banner>
         Dados do usuário
         <C.EditButton onClick={handleEdit} icon={faCog} />
@@ -127,15 +145,17 @@ const Profile = () => {
           <InfoInput title="Email" name="email" inputInfo={userData.email} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="Data de nascimento" type="date" name="date" inputInfo={userData.date} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="Telefone" name="phone" inputInfo={userData.phone} disabled={edit} onChange={handleInputChange} />
-          <InfoInput title="RG" inputInfo={userData.name} disabled={edit} onChange={handleInputChange} />
+          <InfoInput title="Endereço" name="adress" inputInfo={userData.address} disabled={edit} onChange={handleInputChange} />
         </C.UserInfoColumn>
 
         <C.UserInfoColumn>
+          {/*
+          <InfoInput title="RG" inputInfo={userData.name} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="CEP" inputInfo={userData.name} disabled={edit} onChange={handleInputChange} />
-          <InfoInput title="Endereço" name="adress" inputInfo={userData.adress} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="Estado" inputInfo={userData.email} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="Cidade" inputInfo={userData.name} disabled={edit} onChange={handleInputChange} />
           <InfoInput title="Número" inputInfo={userData} disabled={edit} onChange={handleInputChange} />
+          */}
         </C.UserInfoColumn>
       </C.UserInfoWrapper>
 

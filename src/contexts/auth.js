@@ -107,6 +107,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     updateUser, 
     permissions,
+    fetchUser
   };
 
   return (

@@ -11,6 +11,7 @@ import {
   formatCEP,
   isValidCEP,
 } from "@brazilian-utils/brazilian-utils";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignIn = () => {
   const [name, setName] = useState("");
@@ -27,24 +28,63 @@ const SignIn = () => {
   const [numero, setNumero] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignUp = () => {
-    if (!isValidCPF(cpf)) {
-      setError("CPF inválido");
-      return;
-    }
+  const handleSignUp = async () => {
+    try {
+      if (!isValidCPF(cpf)) {
+        throw new Error("CPF inválido");
+      }
+  
+      if (!isValidEmail(email)) {
+        throw new Error("Email inválido");
+      }
+  
+      if (!isValidMobilePhone(telefone)) {
+        throw new Error("Telefone inválido");
+      }
+  
+      if (!isValidCEP(cep)) {
+        throw new Error("CEP inválido");
+      }
 
-    if (!isValidEmail(email)) {
-      setError("Email inválido");
-      return;
-    }
+      if (!name) {
+        throw new Error("Insira o nome");
+      }
 
-    if (!isValidMobilePhone(telefone)) {
-      setError("Telefone inválido");
-      return;
-    }
+      if (!email) {
+        throw new Error("Insira o email!");
+      }
 
-    if (!isValidCEP(cep)) {
-      setError("CEP inválido");
+      if (!senha) {
+        throw new Error("Insira a senha!");
+      }
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/clientes`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          cpf: cpf,
+          telefone: telefone,
+          endereco: endereco,
+          usuario: {
+            nomeCompleto: name,
+            email: email,
+            senha: senha,
+            imagem: " "
+          }
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao criar novo usuário');
+      }
+
+      toast.success('Usuário criado com sucesso!', {
+        theme: "colored",
+      });
+    } catch (e) {
+      toast.error(e.message);
       return;
     }
   };
@@ -81,6 +121,7 @@ const SignIn = () => {
 
   return (
     <C.Container>
+      <ToastContainer/>
       <C.LogoHalf>
         <C.Logo src={logo} alt="MyCoffee Logo" />
       </C.LogoHalf>
@@ -139,6 +180,7 @@ const SignIn = () => {
               onChange={(e) => [setTelefone(e.target.value), setError("")]}
             />
 
+            {/*
             <C.Label>RG</C.Label>
             <Input
               type="text"
@@ -146,7 +188,7 @@ const SignIn = () => {
               value={rg}
               onChange={(e) => [setRg(e.target.value), setError("")]}
             />
-
+          */}
             <C.Label>CPF</C.Label>
             <Input
               type="text"
