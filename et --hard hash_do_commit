@@ -1,0 +1,796 @@
+[33mcommit f7b765a0d473af7b5062d82e5ab54fd358cd3c47[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelopment[m[33m, [m[1;31morigin/development[m[33m)[m
+Merge: 151e22b e73c8fe
+Author: itspedro357 <pedro_henrique7003@hotmail.com>
+Date:   Fri Jun 28 17:42:48 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit 151e22bdb4635d51d6768b6057c900c779f409d0[m
+Author: itspedro357 <pedro_henrique7003@hotmail.com>
+Date:   Fri Jun 28 17:42:23 2024 -0400
+
+    ajuste home e signin
+
+[33mcommit e73c8fec1292dcfdb4dd5d9d93c672e33f5b9133[m
+Merge: d3e16c6 0527781
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 17:20:01 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit d3e16c6632f0a0e2db9c1d277c99ed8563d48029[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 17:19:37 2024 -0400
+
+    :hammer: Refactor: atualiza produtos para utilizar API própria
+
+[33mcommit 052778158e06d8b3968025a1bb42eff7e7b624e0[m
+Author: itspedro357 <pedro_henrique7003@hotmail.com>
+Date:   Fri Jun 28 17:11:36 2024 -0400
+
+    ajustes home e navegação
+
+[33mcommit 026d5c5eaab8dee4d7f7a2c6fc0d6b923303ae66[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 16:11:04 2024 -0400
+
+    Update README
+
+[33mcommit 160535b32bf8cf57709a73689b61302ef827c399[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 15:41:50 2024 -0400
+
+    :sparkles: Refactor: Edição e criação de usuário
+
+[33mcommit 693fa15040e84131d07631a7a142e2b2a51f76a5[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 14:05:06 2024 -0400
+
+    :hammer: Refactor: Melhorias de algumas páginas
+
+[33mcommit 95c8b832812fe5c98335288267c3b5613efdfe6e[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Fri Jun 28 02:45:18 2024 -0400
+
+    Imagem para navigation
+
+[33mcommit 04c581c54f30e64627e0f74bc2d0d82e0e315add[m
+Author: itspedro357 <pedro_henrique7003@hotmail.com>
+Date:   Thu Jun 27 23:45:32 2024 -0400
+
+    Ajuste registro de usuário e implementação da busca de produtos
+
+[33mcommit 1b85f9f0ea889dc7364ed35674dbe64f8359c43d[m
+Author: cyro14 <cyro.14@hotmail.com>
+Date:   Thu Jun 27 21:39:19 2024 -0400
+
+    Atualização da página Reports
+    
+    Sidebar: Redirecionamento para a página reports.
+    Efeito hover nos ícones de gerar relatório.
+
+[33mcommit 68b6ba41de2d242f8ff05389e8da05dc5936c0dc[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Thu Jun 27 20:21:13 2024 -0400
+
+    :hammer: Refactor: Permissões da API e imagem de usuários
+
+[33mcommit 29788647462d01a339c0dc1a07bf0191c2f4811d[m
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Thu Jun 27 03:19:41 2024 -0400
+
+    atualizacao registro de usuario
+
+[33mcommit 9bbeb0e3aaf223f9ef802a60b914ff502153d4f2[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 23:52:50 2024 -0400
+
+    :hammer: Refactor: Refatorando estilos e métodos dashboard de produto
+
+[33mcommit 4a4a03f7a3f6a26b63fe32cadbf4a1248af0b518[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 23:16:50 2024 -0400
+
+    :sparkles: Feature: Adicionar nova categoria e estilos
+
+[33mcommit 427dddc76a3ec3f6f5353ea35af16272c909c9ca[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 20:06:39 2024 -0400
+
+    Deleta categoria implementado
+
+[33mcommit 6fef71197b60346bb05c823a50697536382cb6d1[m
+Merge: 95153a7 7ee12a5
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Wed Jun 26 19:30:15 2024 -0400
+
+    Merge pull request #34 from MyCoffee-Software/CDS-44_21
+    
+    CDS_44-21 Planos utilizando API própria
+
+[33mcommit 7ee12a5e0028d924d7f08ab69a353d35ff4077fa[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 19:28:39 2024 -0400
+
+    Implentação plano para  API própria
+
+[33mcommit 95153a7a498a3694c5c4bfc55b59ed9c3018412a[m
+Merge: bcd03ba a10be99
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Wed Jun 26 02:52:59 2024 -0400
+
+    Merge pull request #33 from MyCoffee-Software/CDS-44_20
+    
+    CDS-44_20
+
+[33mcommit a10be99659c48f756585844ef26daa4ab1ecf983[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 02:51:24 2024 -0400
+
+    Implementação da tabela de categorias
+
+[33mcommit 84f77e18280c5c77f562f9a2e4814fc388430fed[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Wed Jun 26 02:51:07 2024 -0400
+
+    Mudança de rota e sidebar para pegar categoria da API
+
+[33mcommit bcd03ba93a04f4dbc64ab509ee238df4d39f9752[m
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Sat Jun 22 22:54:23 2024 -0400
+
+    Inclusão da tela Carrinho
+
+[33mcommit 08c2e64b637bc68d0f63bf17833a3b0166787ccf[m
+Merge: f5e3c3c b1d6b7f
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Sat Jun 22 00:23:36 2024 -0400
+
+    Merge pull request #32 from MyCoffee-Software/CDS-44_19
+    
+    CDS_44_19
+
+[33mcommit b1d6b7f6a44555984dff3b4246f2fdf538a64153[m
+Author: Luan Rohwedder <luan-rohwedder@hotmail.com>
+Date:   Sat Jun 22 00:17:41 2024 -0400
+
+    Refatoração de autenticação e login para lidar com API própria
+
+[33mcommit f5e3c3c80067332693f92271cb8ef1629f09a023[m
+Author: Yagosbk <yagosbk@hotmail.com>
+Date:   Wed Jun 19 18:29:39 2024 -0300
+
+    Subindo as imagens que serão utilizadas.
+    
+    Todas estão em svg dentro de assets.
+
+[33mcommit 74fb004dfeadd6e4bcbd8003a28b7240ce568e0f[m
+Merge: d2e08cf a54755b
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Mon Jun 10 02:52:31 2024 -0400
+
+    Merge pull request #31 from MyCoffee-Software/CDS-44_18
+    
+    CDS-44_18
+
+[33mcommit a54755b641503983fac1adbf26f88230062b804f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Jun 10 02:38:20 2024 -0400
+
+    Refatoração dos layout e rotas
+
+[33mcommit acd987100f1dadabcf63a62be1b60b1c38da73f8[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Jun 10 01:51:26 2024 -0400
+
+    Redirecionar para home e login com enter
+
+[33mcommit 91434664e6efa13b2b09eff76f0a40fb152577c6[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Jun 10 01:31:29 2024 -0400
+
+    Remoção da pasta de imagens de about us
+
+[33mcommit 3bcc31d981b7b0707780d947efdaf323644edc20[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Jun 10 01:30:38 2024 -0400
+
+    Admin em about us
+
+[33mcommit b1d19d06d6a4a2325c82a96b0a20751c207079cd[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Jun 10 01:28:08 2024 -0400
+
+    Atualização da tela About Us
+
+[33mcommit 398abe7f54dee5222e0c7e609734fcf78763732b[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Jun 7 23:46:56 2024 -0400
+
+    Melhoria tela AboutUs
+
+[33mcommit aba60786dc833a5065d5299714b599c61cbdfafa[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Jun 7 23:46:44 2024 -0400
+
+    Modificação texteditor
+
+[33mcommit be9f09e7b3a8248faccc57b3555fc8d3de12d022[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Jun 7 23:23:00 2024 -0400
+
+    Componente de editor de texto com react-quill
+
+[33mcommit c24f64be3c7b4e1a945712b88da9d88ecc175296[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 22:41:29 2024 -0400
+
+    Revert "erro"
+    
+    This reverts commit 9f12403c72fdb97660b85c424689e181cbc45b1f.
+
+[33mcommit 9f12403c72fdb97660b85c424689e181cbc45b1f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 22:41:12 2024 -0400
+
+    erro
+
+[33mcommit d8096264103e48bf6ca1ff943ff773d91fa809f3[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 17:35:51 2024 -0400
+
+    Instalção e teste do react toastify
+
+[33mcommit 6cb142aaa63b953b7a259ab65b3f2c886c2d2cb4[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 17:19:10 2024 -0400
+
+    Tornando tabela responsiva
+
+[33mcommit 51f8624718cc9b97fdfd3fff5dfa5e0f69b8bb37[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 17:18:12 2024 -0400
+
+    Correções de rotas e layout para dashboard
+
+[33mcommit 85dc5c0d9a3f786c22c07c4f2d8c5c837ca38751[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Jun 6 17:03:41 2024 -0400
+
+    Melhoria autenticação
+
+[33mcommit d2e08cf8285969c9369b1e244bd3f50fc4c4158b[m
+Author: cyro14 <cyro.14@hotmail.com>
+Date:   Sat Jun 1 13:17:41 2024 -0400
+
+    Criação da Página de Relatórios
+    
+    Criação da página Reports e algumas correções na AboutUs
+
+[33mcommit cbaa97eebfcd779e0e8aac867cc87cf03d03a0ac[m
+Merge: 43d322f e607f72
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Thu May 30 22:22:51 2024 -0400
+
+    Merge pull request #29 from MyCoffee-Software/CDS-44_16
+    
+    CDS-44_16
+
+[33mcommit e607f72d051d6f8fb6476a15c44a251140b589eb[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 21:19:47 2024 -0400
+
+    Versão mobile da tela cadastro/editar produto
+
+[33mcommit cf6aaf252d18aec618bf1fbeb22ca3452402edb5[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 19:55:07 2024 -0400
+
+    Tela cadastro/editar produto para desktop
+
+[33mcommit bf255256956194c993f7ce7fef226ce8d797ff8f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 19:54:39 2024 -0400
+
+    Atualização input, adicionando name
+
+[33mcommit 8291b9b742d2f2eef8d243cb6acca5a5c11e224d[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 19:54:10 2024 -0400
+
+    Componente de textarea
+
+[33mcommit e20cbea6b7333ed50eaa68fe6504b36671b7e63a[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 16:50:19 2024 -0400
+
+    Definição inicial da tela de cadastro/editar produto
+
+[33mcommit 6b85fc56534c2636a27c941f4c1cdbb89c5bd906[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 30 15:23:10 2024 -0400
+
+    Atualiza gitignore
+
+[33mcommit 43d322fed9dbb3c9ef1ebe90fae1cf5937d82006[m
+Merge: 6563dd5 69e01ac
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Fri May 24 19:49:03 2024 -0400
+
+    Resolva conflitos apos pull
+
+[33mcommit 69e01ac86f12108ccc85c5343a1c411f8efd976b[m
+Merge: a2c2a0b 3ea28da
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Wed May 22 23:28:50 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit 6563dd5befddc03058c5d2e070b505efb9075ef8[m
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Fri May 17 17:47:20 2024 -0400
+
+    ajustes
+
+[33mcommit 97c760f0aa72251a9c2c53ae53b8758696f18bef[m
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Fri May 17 13:22:04 2024 -0400
+
+    tela home
+
+[33mcommit 3ea28da04a704ebeddc9bc7b228c532ea229ba92[m
+Merge: 2085f43 799bb78
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Fri May 17 14:07:10 2024 -0400
+
+    tela home
+
+[33mcommit 2085f43fcda9289439bc3bbf582e97122a4d739c[m
+Author: pedro <pedro_henrique7003@hotmail.com>
+Date:   Fri May 17 13:22:04 2024 -0400
+
+    tela home
+
+[33mcommit 799bb786e6e9cf3513e2d0e297734c415c75e144[m
+Merge: 26e9d89 5135b0b
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Fri May 17 11:02:53 2024 -0400
+
+    Merge pull request #25 from MyCoffee-Software/CDS-44_14
+    
+    CDS-44_14
+
+[33mcommit 5135b0b21b039fc909bc9474295d9831c4ab0989[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri May 17 10:50:07 2024 -0400
+
+    Corrigindo z-index do menu de perfl
+
+[33mcommit cc1f52b747db32a89b63e93431602b91f5ad75e6[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri May 17 10:48:48 2024 -0400
+
+    Tela de listagem de produtos
+
+[33mcommit 01d033bb545a9a855aa074753aae2f003cf0189c[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri May 17 10:48:28 2024 -0400
+
+    Componente Table
+
+[33mcommit a2c2a0b461fe590f21f6618580edfd7fcc691c72[m
+Merge: 0047fca 26e9d89
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Thu May 16 22:49:20 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit 26e9d89c576a1735a3e3828f05eae363e49f2cc0[m
+Author: cyro14 <cyro.14@hotmail.com>
+Date:   Thu May 16 21:51:45 2024 -0400
+
+    Ajustes Tela Sobre Nós
+
+[33mcommit 0047fca7e0ff9e5e45645ab94679b928adff3d04[m
+Merge: 8e0b4a5 a5cf68d
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Thu May 16 21:42:59 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit e318cb8eb8cb4f0681d2612fa28426877c3a4580[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 16 19:24:42 2024 -0400
+
+    Criação de um Layout para dashboard, e uma tela dashboard
+
+[33mcommit 510fe00fe52ebf0a1cc74149f794793655be1d6c[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu May 16 18:40:17 2024 -0400
+
+    Corrige erro de user nulo
+
+[33mcommit a5cf68d9b2453195a37057a042d735a69458de7e[m
+Author: cyro14 <cyro.14@hotmail.com>
+Date:   Wed May 15 22:55:49 2024 -0400
+
+    Criação da parte dos Fundadores na tela Sobre Nós
+
+[33mcommit 87703cb7ac0d53acf41677bda2af72da6e025e93[m
+Merge: 9678742 272aa14
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Tue May 14 20:48:23 2024 -0400
+
+    Merge pull request #23 from MyCoffee-Software/CDS-44_13
+    
+    CDS-44_13
+
+[33mcommit 272aa14af1e55f027993118acaa6aeb6557b4d77[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Tue May 14 20:44:08 2024 -0400
+
+    Mostrar imagem quando logado para mobile na sidebar
+
+[33mcommit e2b0e772abb42ac7f92b14f0bab86b4503d17853[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Tue May 14 20:38:28 2024 -0400
+
+    Botão para admin
+
+[33mcommit 8e0b4a5a93445bae2dbbbbe8f559abc1fe62314a[m
+Merge: 50d69c7 9678742
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Sun May 12 21:59:39 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit 50d69c73d2ac3e004ff6be41e138c0fa62e8006a[m
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Sun May 12 21:53:28 2024 -0400
+
+    ok
+
+[33mcommit 96787429a3e1e431f2cd887fe0fe3fb9e106559e[m
+Merge: dcace3a 5bd31da
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Wed May 8 13:45:56 2024 -0400
+
+    Merge pull request #21 from MyCoffee-Software/CDS-44_12
+    
+    CDS-44_12
+
+[33mcommit 5bd31da8d487ac302042d6e13deb6630e7a7918d[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon May 6 16:00:27 2024 -0400
+
+    Modificação mobile
+
+[33mcommit 1333eac32ddd4d4bd57d952b58b2f3845b1c5394[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon May 6 15:51:14 2024 -0400
+
+    Criação desktop da tela Planos e roteamento para a tela
+
+[33mcommit 28d54c94241b8791351d7566ec0388fa52061e9c[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon May 6 15:50:43 2024 -0400
+
+    Criação do componente de card para planos
+
+[33mcommit dcace3a2ab8316bfbe2fdce7abe3e54e88b3e0e0[m
+Merge: 7921537 fb35989
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Mon May 6 11:33:20 2024 -0400
+
+    Merge pull request #19 from MyCoffee-Software/CDS-44_11
+    
+    CDS-44_11
+
+[33mcommit fb359893ac623307e3cd06f2be0b74341296363e[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon May 6 11:27:20 2024 -0400
+
+    Correções
+
+[33mcommit 792153713daac43b0b92f2664f70ce8d614f38b7[m
+Merge: 071b9df fec7da5
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Wed May 1 22:03:45 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit 071b9df0fd77d99ce699a78cceb17bc9486bdb9d[m
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Wed May 1 21:35:10 2024 -0400
+
+    Atualização componentes
+
+[33mcommit 2475d823339ce5621e15bf4f4476f120ec12e1b8[m
+Merge: 222692f 07e8fb5
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Wed May 1 21:31:34 2024 -0400
+
+    Merge branch 'development' of https://github.com/MyCoffee-Software/MyCoffee-Web into development
+
+[33mcommit fec7da50dd4006b9f884a62990d003659823e77e[m
+Author: cyro14 <cyro.14@hotmail.com>
+Date:   Wed May 1 20:22:39 2024 -0400
+
+    Criação inicial da página "Sobre Nós"
+
+[33mcommit 3ef63339c46e0470ac8ee8e386326f14dbfba68f[m
+Merge: 07e8fb5 faee475
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Mon Apr 29 21:37:40 2024 -0400
+
+    Merge pull request #17 from MyCoffee-Software/CDS-44_10
+    
+    CDS-44_10
+
+[33mcommit faee475fe1dec474f7ffda4dc8a72646d575ac54[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 29 21:31:54 2024 -0400
+
+    Atualização e melhorias de alguns componentes
+
+[33mcommit f4634f2acdd716ae7300eb3c9bd2ce845f014a52[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 29 18:42:00 2024 -0400
+
+    Correção bug ao logar usuário constava não logado
+
+[33mcommit 6c9da34ef871e2ac58ab0db7df75a0e5eb17c496[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 29 15:42:17 2024 -0400
+
+    Mobile
+
+[33mcommit c00ab1efe78a06e4e2249e2db1392034546f952a[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 29 00:37:21 2024 -0400
+
+    Criação desktop para tela de usuário
+
+[33mcommit 0ad794d5adc36d50c80d459ae353d956df82681f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Sat Apr 27 22:43:01 2024 -0400
+
+    Criação de um componente para inputs com título
+
+[33mcommit 42fba6a5e42b7847857dc099d225c4c61c920b1b[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Sat Apr 27 21:24:24 2024 -0400
+
+    Dropdown na foto do usuário
+
+[33mcommit 222692f04d540bb6b2e3c56952e7e3f1bc412051[m
+Author: evertonbgomes <everton_bgomes@hotmail.com>
+Date:   Thu Apr 25 19:40:22 2024 -0400
+
+    adicionado aboutus e carrinho
+
+[33mcommit 07e8fb5bae69ab45e8ec34813fa447671d91dc24[m
+Merge: ebdfb19 b622c4e
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Fri Apr 19 21:17:45 2024 -0400
+
+    Merge pull request #15 from MyCoffee-Software/CDS-44_9
+    
+    CDS-44_9 Tela produto
+
+[33mcommit b622c4e0cd1653a80bfb8a1c1502371df4a8a857[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Apr 19 20:59:13 2024 -0400
+
+    Navbar mobile seta para voltar em certas telas
+
+[33mcommit fd32747875a12250f34161e212f63bb91d93937f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Apr 19 20:54:01 2024 -0400
+
+    Redirecionamento do produto
+
+[33mcommit 01240f8547006b9eaac773fa8ec8bc2f21215023[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Apr 19 20:41:04 2024 -0400
+
+    Implementação mobile da tela produto
+
+[33mcommit a6ec3d430e693ba34bfa33c40cbfda9ea807fa4f[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Apr 19 11:42:23 2024 -0400
+
+    Implementação desktop da tela de produto para cliente
+
+[33mcommit f7a7d11b4fab06096c1a087308b46b95e25fc9b3[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Fri Apr 19 11:42:04 2024 -0400
+
+    Implementação do componente de  seleção de quantidade
+
+[33mcommit ebdfb192ee7632275968da42f34a0762963b1a85[m
+Merge: ddd0e0d 53e2f2f
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Thu Apr 18 16:17:43 2024 -0400
+
+    CDS-44_8 Implementação de login utilizando API teste
+
+[33mcommit 53e2f2f1342aadec56459383d235593579bcd43c[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Apr 18 16:09:07 2024 -0400
+
+    Implementando mudança de nome quando logado
+
+[33mcommit 6a9a4817063e8b2ba4ebcb9b9550122712da4d4b[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Apr 18 15:57:31 2024 -0400
+
+    Troca de API para login de usuário
+
+[33mcommit a6a00dde4dc3c8f691c6c76e49caaf058de5932e[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Apr 18 00:32:11 2024 -0400
+
+    Utilização do autenticador
+
+[33mcommit a453b3abf6c22361177570f33f3856c41d25607c[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Thu Apr 18 00:30:59 2024 -0400
+
+    Implementação do context de autenticação e um hook
+
+[33mcommit ddd0e0d02ee4b247d042b32a84f0c1eadbd2e549[m
+Merge: 19da5f6 a07406c
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Wed Apr 17 20:10:33 2024 -0400
+
+    CDS-44_7
+    
+    Implementação da tela produtos disponíveis com API provisória
+
+[33mcommit a07406ca1afbd5fda5a5d3e287142f8736b49dee[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Wed Apr 17 19:51:57 2024 -0400
+
+    Ajustes de estilo em Navbar, sidebar e productcard
+
+[33mcommit 2b20df896edfaed80ba7a20153f085d74c69f5be[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Wed Apr 17 19:34:47 2024 -0400
+
+    API provisória para placeholder de produtos disponíveis, definido como home provisório
+
+[33mcommit 708f68dbcffb6c22da806d5765e2423c8f7f08a3[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Wed Apr 17 19:33:37 2024 -0400
+
+    Ajustes no estilo de ProductCard
+
+[33mcommit ab01c408fadaee532a810c836a9e07284c3dac51[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Wed Apr 17 16:44:13 2024 -0400
+
+    Implementação da tela produtos disponíveis
+
+[33mcommit 3896e0492f988f133c26662ca22e6a20cf4f4d40[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Wed Apr 17 16:43:55 2024 -0400
+
+    Refatoramento ProductCard
+
+[33mcommit 19da5f60c691fc0ba9d376258b186bbdee0a2e83[m
+Merge: 0489f16 2474763
+Author: Everton Bonfim Gomes <131558782+evertonbgomes@users.noreply.github.com>
+Date:   Wed Apr 17 00:39:55 2024 -0400
+
+    Merge pull request #9 from MyCoffee-Software/CDS-44_6
+
+[33mcommit 2474763d2eab6261f14eac899b31655c3373339a[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Tue Apr 16 19:57:46 2024 -0400
+
+    Implementação do header da sidebar mobile
+
+[33mcommit 77b89d1bb79149c9f6eee1bbe5a6ec43162e1596[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Tue Apr 16 19:32:56 2024 -0400
+
+    Implementação para mobile de sidebar e navbar
+
+[33mcommit 0489f1698ed09e5a919ea2e00f90e1f2129a0a01[m
+Merge: ad44798 60a1ab1
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Mon Apr 15 19:02:33 2024 -0400
+
+    Merge pull request #4 from MyCoffee-Software/CDS-44_5
+    
+    Implementação parcial de navbar, sidebar e card de produtos
+
+[33mcommit 60a1ab10a57c2d1be581ba25145154b708d5a5ad[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 18:56:53 2024 -0400
+
+    Correções
+
+[33mcommit a8daaa7cfb431280b89bd923c88f0abedd511379[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 18:51:55 2024 -0400
+
+    Implementação de layouts para roteamento
+
+[33mcommit b208be1913342151e6fa8ec45c8dd2e55ea4a014[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 18:51:21 2024 -0400
+
+    Implementação SideBar
+
+[33mcommit 53dd4e1b411ea976c7a191cb7e1ed2861ecf1c99[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 17:04:18 2024 -0400
+
+    Navigation mudado para pasta components
+
+[33mcommit dd38e03a06372540657f36ea02c6e3ee437193ec[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 16:39:14 2024 -0400
+
+    Implementação de Navigation
+
+[33mcommit 89553f0e89bbb99f8a03bb16a376434a1b1a10ff[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 15:24:43 2024 -0400
+
+    Implementação Card de produtos e refatoramento de componentes
+
+[33mcommit ad44798fc83e601a8cd697a9e7cf164955780a24[m
+Merge: f017058 fe36e1c
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Mon Apr 15 11:20:01 2024 -0400
+
+    Merge pull request #3 from MyCoffee-Software/CDS-44_4
+    
+    Implementação mobile das telas Login/Cadastro
+
+[33mcommit fe36e1ccae03e5134f07f3a06a99e08ac364bd85[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Mon Apr 15 11:14:59 2024 -0400
+
+    Implementação mobile das telas Login/Cadastro
+
+[33mcommit f017058247c47bae902e06daea19520bf3893431[m
+Merge: 85758f1 f2dd07a
+Author: Luan Rohwedder <57503336+luanrohwedder@users.noreply.github.com>
+Date:   Sun Apr 14 21:49:03 2024 -0400
+
+    Merge pull request #2 from MyCoffee-Software/CDS-44_1
+    
+    Criação das telas Login/Cadastro
+
+[33mcommit f2dd07ab33338ed6f47ecda797ceb5582421c1a0[m
+Author: Luan Rohwedder <luan.sandim@evop.com.br>
+Date:   Sun Apr 14 21:41:22 2024 -0400
+
+    Criação das telas Login/Cadastro
+
+[33mcommit 85758f1527995a19119e8fdc7ca6c90f3ad466c6[m
+Merge: bd62c85 f3c37e4
+Author: Yagosbk <82421639+Yagosbk@users.noreply.github.com>
+Date:   Thu Apr 4 23:32:58 2024 -0300
+
+    Merge pull request #1 from MyCoffee-Software/CDS-22
+    
+    Implementando aplicação base.
+
+[33mcommit f3c37e4699a19321f2a8ce673ddee61aad16f8d5[m
+Author: Yagosbk <yagosbk@hotmail.com>
+Date:   Mon Apr 1 00:14:32 2024 -0300
+
+    Implementando aplicação base.
+    
+    Implementando a aplicação base Hello World.
+
+[33mcommit bd62c85ec778438f6d55a314296036bfa60b4c03[m
+Author: Yagosbk <yagosbk@hotmail.com>
+Date:   Mon Apr 1 00:11:48 2024 -0300
+
+    Create README.md
