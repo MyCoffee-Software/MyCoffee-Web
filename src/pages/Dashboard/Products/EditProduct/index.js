@@ -10,6 +10,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import MediaQuery from 'react-responsive';
 import { ToastContainer, toast } from 'react-toastify';
 
+
 const EditProduct = () => {
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
@@ -20,11 +21,25 @@ const EditProduct = () => {
     image: '',
     description: ''
   });
+  const [productImage, setProductImage] = useState(null);
+
+  useEffect(() => {
+    if (product && product.imagens) {
+      const imageName = product.imagens.split('/').pop();
+      import(`../../../../assets/${imageName}`)
+        .then(imageModule => {
+          setProductImage(imageModule.default);
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageName}`, error);
+        });
+    }
+  }, [product]);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`https://fakestoreapi.com/products/${product_id}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?id=${product_id}`);
         const data = await response.json();
         setProduct(data);
       } catch (e) {
@@ -38,11 +53,11 @@ const EditProduct = () => {
   useEffect(() => {
     if (product) {
       setProductData({
-        title: product.title,
-        price: product.price,
-        category: product.category,
-        image: product.image,
-        description: product.description
+        title: product.nome,
+        price: product.preco,
+        category: product.categoria,
+        image: product.imagens,
+        description: product.descricao
       });
     }
   }, [product]);
@@ -93,7 +108,7 @@ const EditProduct = () => {
 
           <C.ProductInfoColumn>
             <C.ProductImageContainer>
-              <C.ProductImage src={productData.image} />
+              <C.ProductImage src={productImage} />
             </C.ProductImageContainer>
 
             <C.ProductInfoRow>
