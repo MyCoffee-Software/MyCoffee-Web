@@ -8,8 +8,8 @@ export const NavigationWrapper = styled.nav`
   height: 80px;
   width: 100%;
   margin-bottom: 20px;
-  border-bottom: 2px solid #4a0404;
-  position: relative; /* Adicionado para posicionamento relativo */
+  position: relative;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5); 
 `;
 
 export const NavigationContent = styled.div`
@@ -19,7 +19,7 @@ export const NavigationContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative; /* Adicionado para posicionamento relativo */
+  position: relative; 
 `;
 
 export const Logo = styled.img`
