@@ -8,7 +8,7 @@ function AvailableProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?limite=20&pagina=1`);
         const data = await response.json();
         setProducts(data);
       } catch (e) {
