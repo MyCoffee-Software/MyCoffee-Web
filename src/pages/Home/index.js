@@ -15,20 +15,22 @@ const Home = () => {
   const [randomProducts, setRandomProducts] = useState([]);
 
   useEffect(() => {
-    const fetchRandomProducts = async () => {
+    const fetchFixedProducts = async () => {
       try {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
-        const shuffledProducts = shuffleArray(data);
-        // Select first 4 products
-        const selectedProducts = shuffledProducts.slice(0, 4);
-        setRandomProducts(selectedProducts);
+        
+        // Select the first 4 products
+        const fixedProducts = data.slice(0, 4);
+        
+        setRandomProducts(fixedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
+    
 
-    fetchRandomProducts();
+    fetchFixedProducts();
   }, []);
 
   const shuffleArray = (array) => {
