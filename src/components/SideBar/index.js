@@ -9,6 +9,20 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
   const { user } = useAuth();
   const sidebarRef = useRef();
   const [categories, setCategories] = useState([]);
+  const [userImage, setUserImage] = useState(null);
+
+  useEffect(() => {
+    if (user && user.imagem) {
+      const imageName = user.imagem.split('/').pop();
+      import(`../../assets/User/${imageName}`)
+        .then(imageModule => {
+          setUserImage(imageModule.default);
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageName}`, error);
+        });
+    }
+  }, [user]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -59,9 +73,9 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
               {user ? (
                 <>
                   <Link to="profile">
-                    <C.UserIcon src={user.avatar} />
+                    <C.UserIcon src={userImage} />
                   </Link>
-                  <C.Label>{user.name}</C.Label>
+                  <C.Label>{user.nome}</C.Label>
                 </>
               ) : (
                 <>

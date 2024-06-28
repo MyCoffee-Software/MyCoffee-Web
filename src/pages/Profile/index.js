@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as C from "./styles"
 import useAuth from '../../hooks/useAuth';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +9,23 @@ const Profile = () => {
   const { user, updateUser } = useAuth();
   const [edit, setEdit] = useState(true);
   const [userData, setUserData] = useState({
-    name: user.name,
+    name: user.nome,
     email: user.email
   });
+  const [userImage, setUserImage] = useState(null);
+
+  useEffect(() => {
+    if (user && user.imagem) {
+      const imageName = user.imagem.split('/').pop();
+      import(`../../assets/User/${imageName}`)
+        .then(imageModule => {
+          setUserImage(imageModule.default);
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageName}`, error);
+        });
+    }
+  }, [user]);
 
   const handleEdit = () => {
     setEdit(!edit);
@@ -42,8 +56,8 @@ const Profile = () => {
       </C.Banner>
 
       <C.ProfileInfo>
-        <C.ProfileImage src={user.avatar} alt="Imagem do Usuário" />
-        <C.Username>{user.name}</C.Username>
+        <C.ProfileImage src={userImage} alt="Imagem do Usuário" />
+        <C.Username>{user.nome}</C.Username>
       </C.ProfileInfo>
 
       <C.UserInfoWrapper>

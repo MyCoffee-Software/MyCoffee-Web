@@ -4,6 +4,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [permissions, setPermissions] = useState([]);
   const [token, setToken] = useState(null);
 
   const API_URL = process.env.REACT_APP_API_URL;
@@ -26,15 +27,10 @@ export const AuthProvider = ({ children }) => {
       if (!response.ok) {
         throw new Error('Erro ao obter informações do usuário');
       }
-      const user = await response.json();
-
-      const usuario = {
-        name: user.usuario.nome,
-        email: user.usuario.email,
-        avatar: user.usuario.imagem,
-      }
+      const { usuario, permissoes} = await response.json();
 
       setUser(usuario);
+      setPermissions(permissoes);
     } catch (error) {
       console.error('Erro ao obter informações do usuário:', error.message);
     }
@@ -109,7 +105,8 @@ export const AuthProvider = ({ children }) => {
     token,
     login,
     logout,
-    updateUser
+    updateUser, 
+    permissions,
   };
 
   return (

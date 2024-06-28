@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import * as C from "./style";
@@ -14,6 +14,20 @@ import ProfileMenu from "../ProfileMenu";
 
 const Navigation = ({ onToggleSidebar, back }) => {
   const { user } = useAuth();
+  const [userImage, setUserImage] = useState(null);
+
+  useEffect(() => {
+    if (user && user.imagem) {
+      const imageName = user.imagem.split('/').pop();
+      import(`../../assets/User/${imageName}`)
+        .then(imageModule => {
+          setUserImage(imageModule.default);
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageName}`, error);
+        });
+    }
+  }, [user]);
 
   return (
     <C.NavigationWrapper>
@@ -38,8 +52,8 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
             {user ? (
               <>
-                <ProfileMenu userImage={user.avatar} />
-                <C.Label>{user.name}</C.Label>
+                <ProfileMenu userImage={userImage} />
+                <C.Label>{user.nome}</C.Label>
               </>
             ) : (
               <>
