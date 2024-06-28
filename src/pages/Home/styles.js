@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../styles/device"
 
 export const Overlap = styled.div`
   height: 1030px;
@@ -11,7 +12,7 @@ export const Image = styled.img`
   left: 183px;
   object-fit: cover;
   position: absolute;
-  top: 121px;
+  top: 321px;
   width: 203px;
 `;
 
@@ -20,7 +21,7 @@ export const Img = styled.img`
   left: 583px;
   object-fit: cover;
   position: absolute;
-  top: 60px;
+  top: 160px;
   width: 65px;
 `;
 
@@ -34,25 +35,29 @@ export const Rectangle = styled.div`
   width: 1440px;
 `;
 
+
 export const texto3 = styled.div`
   color: #000000;
   font-family: "Roboto Serif-Regular", Helvetica;
   font-size: 50px;
   font-weight: 400;
-  left: 444px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
   top: 649px;
   width: 585px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
+
+
 
 export const Image2 = styled.img`
   height: 65px;
   left: 1090px;
   object-fit: cover;
   position: absolute;
-  top: 485px;
+  top: 585px;
   width: 64px;
 `;
 
@@ -60,10 +65,10 @@ export const Div = styled.div`
   background-color: #decdbb;
   border-radius: 20px;
   box-shadow: inset 0px 4px 4px #00000040;
-  height: 404px;
+  height: 434px;
   left: 0;
   position: absolute;
-  top: 626px;
+  top: 715px;
   width: 100vw;
 `;
 
@@ -72,7 +77,7 @@ export const Image3 = styled.img`
   left: 939px;
   object-fit: cover;
   position: absolute;
-  top: 117px;
+  top: 157px;
   width: 213px;
 `;
 
@@ -108,7 +113,7 @@ export const Image7 = styled.img`
   left: 971px;
   object-fit: cover;
   position: absolute;
-  top: 214px;
+  top: 314px;
   width: 64px;
 `;
 
@@ -143,244 +148,13 @@ export const texto1 = styled.div`
   width: 344px;
 `;
 
-export const Task = styled.div`
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040;
-  height: 230px;
-  left: 47px;
-  position: absolute;
-  top: 752px;
-  width: 361px;
-`;
-
-export const Task2 = styled.div`
-  height: 52px;
-  left: 251px;
-  position: absolute;
-  top: 921px;
-  width: 139px;
-`;
-
-export const destaque1 = styled.img`
-  height: 133px;
-  left: 60px;
-  object-fit: cover;
-  position: absolute;
-  top: 772px;
-  width: 233px;
-`;
-
-export const destaque1texto = styled.div`
-  color: #000000;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 17px;
-  font-weight: 400;
-  left: 308px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 771px;
-  width: 100px;
-`;
-
-export const destaque1preco = styled.div`
-  color: #230707;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 30px;
-  font-weight: 400;
-  height: 47px;
-  left: 60px;
-  letter-spacing: 0;
-  line-height: 36px;
-  position: absolute;
-  top: 924px;
-  width: 228px;
-`;
-
-export const TextWrapper7 = styled.div`
-  color: #fffafa;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  height: 53px;
-  left: 293px;
-  letter-spacing: 0;
-  line-height: 18px;
-  position: absolute;
-  top: 915px;
-  width: 61px;
-`;
-
-export const Task3 = styled.div`
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040;
-  height: 230px;
-  left: 528px;
-  position: absolute;
-  top: 752px;
-  width: 361px;
-`;
-
-export const destaque2 = styled.img`
-  height: 133px;
-  left: 542px;
-  object-fit: cover;
-  position: absolute;
-  top: 772px;
-  width: 233px;
-`;
-
-export const destaque2texto = styled.div`
-  color: #000000;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 17px;
-  font-weight: 400;
-  left: 794px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 771px;
-  width: 100px;
-`;
-
-export const destaque2preco = styled.div`
-  color: #230707;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 30px;
-  font-weight: 400;
-  height: 47px;
-  left: 542px;
-  letter-spacing: 0;
-  line-height: 36px;
-  position: absolute;
-  top: 917px;
-  width: 228px;
-`;
-
-export const TextWrapper9 = styled.div`
-  color: #fffafa;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  height: 53px;
-  left: 788px;
-  letter-spacing: 0;
-  line-height: 18px;
-  position: absolute;
-  top: 915px;
-  width: 82px;
-`;
-
-export const Task5 = styled.div`
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000040;
-  height: 230px;
-  left: 1000px;
-  position: absolute;
-  top: 752px;
-  width: 361px;
-`;
-
-export const destaque3 = styled.img`
-  height: 133px;
-  left: 1014px;
-  object-fit: cover;
-  position: absolute;
-  top: 774px;
-  width: 233px;
-`;
-
-export const Task6 = styled.div`
-  height: 52px;
-  left: 1218px;
-  position: absolute;
-  top: 921px;
-  width: 139px;
-`;
-
-export const destaque3texto = styled.div`
-  color: #000000;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 17px;
-  font-weight: 400;
-  left: 1266px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 771px;
-  width: 100px;
-`;
-
-export const destaque3preco = styled.div`
-  color: #230707;
-  font-family: "Scope One-Regular", Helvetica;
-  font-size: 30px;
-  font-weight: 400;
-  height: 47px;
-  left: 1014px;
-  letter-spacing: 0;
-  line-height: 36px;
-  position: absolute;
-  top: 917px;
-  width: 228px;
-`;
-
-export const TextWrapper11 = styled.div`
-  color: #fffafa;
-  font-family: "Roboto-Regular", Helvetica;
-  font-size: 15px;
-  font-weight: 400;
-  height: 53px;
-  left: 1260px;
-  letter-spacing: 0;
-  line-height: 18px;
-  position: absolute;
-  top: 915px;
-  width: 82px;
-`;
-
-export const Rectangle3 = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 20px;
-  height: 265px;
-  left: 16px;
-  mix-blend-mode: color-burn;
-  position: absolute;
-  top: 734px;
-  width: 428px;
-`;
-
-export const Rectangle4 = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 20px;
-  height: 265px;
-  left: 490px;
-  mix-blend-mode: color-burn;
-  position: absolute;
-  top: 734px;
-  width: 428px;
-`;
-
-export const Rectangle5 = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 20px;
-  height: 265px;
-  left: 969px;
-  mix-blend-mode: color-burn;
-  position: absolute;
-  top: 734px;
-  width: 428px;
-`;
 
 export const Image10 = styled.img`
   height: 65px;
   left: 1222px;
   object-fit: cover;
   position: absolute;
-  top: 30px;
+  top: 630px;
   width: 50px;
 `;
 
@@ -389,7 +163,7 @@ export const Image11 = styled.img`
   left: 1150px;
   object-fit: cover;
   position: absolute;
-  top: 50px;
+  top: 650px;
   width: 64px;
 `;
 
@@ -493,13 +267,7 @@ export const texto2 = styled.div`
   width: 430px;
 `;
 
-export const Overlap2 = styled.div`
-  height: 104px;
-  left: 98px;
-  position: absolute;
-  top: 521px;
-  width: 447px;
-`;
+
 
 export const Image16 = styled.img`
   height: 65px;
@@ -515,12 +283,12 @@ export const TextWrapper16 = styled.div`
   font-family: "Roboto Serif-Regular", Helvetica;
   font-size: 40px;
   font-weight: 400;
-  left: 0;
-  letter-spacing: 0;
+  left: 100px;
   line-height: normal;
   position: absolute;
-  top: 0;
-  width: 207px;
+  top: 525px;
+  width: 203px;
+  height: 65px;
 `;
 
 export const TextWrapper17 = styled.div`
@@ -528,9 +296,54 @@ export const TextWrapper17 = styled.div`
   font-family: "Roboto Serif-Regular", Helvetica;
   font-size: 40px;
   font-weight: 400;
-  left: 232px;
+  left: 335px;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
-  top: 10px;
+  top: 525px;
+`;
+
+
+
+
+export const ProductsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+
+  @media ${device.lg} {
+    padding: 30px;
+    gap: 10px;
+  }
+
+  @media ${device.sm} {
+    padding: 10px;
+    gap: 10px;
+  }
+
+`;
+
+export const ProductsContent = styled.div`
+  width: 100%;
+  max-width: 350px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+  @media ${device.lg} {
+    max-width: 210px;
+    height: 350px;
+  }
+
+  @media ${device.sm} {
+    max-width: 160px;
+    height: 250px;
+  }
 `;
