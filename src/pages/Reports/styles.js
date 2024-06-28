@@ -39,11 +39,18 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
 `;
 
+
 export const IconButton = styled.button`
   background: none;
   border: none;
   margin: 0 10px;
   cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 
   img {
     width: 67px;

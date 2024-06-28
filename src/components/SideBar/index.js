@@ -59,7 +59,11 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
                   <C.ContentButton>Categorias</C.ContentButton>
                 </Link>
                 <C.ContentButton>Usuários</C.ContentButton>
-                <C.ContentButton>Relatórios</C.ContentButton>
+
+                <Link to={'/dashboard/reports'}>
+                  <C.ContentButton>Relatórios</C.ContentButton>
+                </Link>
+                
               </>
             )}
           </C.SidebarContent>
