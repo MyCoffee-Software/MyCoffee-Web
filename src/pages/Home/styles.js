@@ -274,7 +274,7 @@ export const Image16 = styled.img`
   left: 42px;
   object-fit: cover;
   position: absolute;
-  top: 38px;
+  top: 638px;
   width: 203px;
 `;
 

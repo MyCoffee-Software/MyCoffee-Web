@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     const fetchRandomProducts = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?limite=10&pagina=1`);
         const data = await response.json();
         const shuffledProducts = shuffleArray(data);
         // Select first 4 products

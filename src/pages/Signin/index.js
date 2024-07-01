@@ -74,8 +74,8 @@ const SignIn = () => {
           <Button Text="Entrar" onClick={handleLogin} type="submit" />
 
           <C.Label>
-            Não tem conta?
-            <Link to="/signup">&nbsp;Registre-se</Link>
+            Não tem conta? <Link to="/signup">Registre-se</Link> |{" "}
+            <Link to="/home">Voltar para o início</Link>
           </C.Label>
         </C.Content>
       </C.ContentHalf>
