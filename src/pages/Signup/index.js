@@ -19,7 +19,6 @@ const SignIn = () => {
   const [senha, setSenha] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [rg, setRg] = useState("");
   const [cpf, setCpf] = useState("");
   const [cep, setCep] = useState("");
   const [endereco, setEndereco] = useState("");
@@ -67,11 +66,15 @@ const SignIn = () => {
           cpf: cpf,
           telefone: telefone,
           endereco: endereco,
+          cep: cep,
+          estado: estado,
+          cidade: cidade,
+          numero: numero,
           usuario: {
             nomeCompleto: name,
             email: email,
             senha: senha,
-            imagem: " "
+            imagem: cpf
           }
         }),
       });
@@ -91,15 +94,16 @@ const SignIn = () => {
 
   const handleCpfChange = (e) => {
     const value = e.target.value;
-    setCpf(value);
-    setError("");
+    const cpfNumerico = value.replace(/\D/g, '');
+    setCpf(cpfNumerico);
   };
 
   const handleCepChange = (e) => {
     const value = e.target.value;
-    setCep(value);
-    if (value.length === 8) {
-      fetchCepData(value);
+    const cepNumerico = value.replace(/\D/g, '');
+    setCep(cepNumerico);
+    if (cepNumerico.length === 8) {
+      fetchCepData(cepNumerico);
     }
   };
 
@@ -178,23 +182,16 @@ const SignIn = () => {
               placeholder="Digite seu telefone"
               value={telefone}
               onChange={(e) => [setTelefone(e.target.value), setError("")]}
+              mask="(99) 99999-9999"
             />
 
-            {/*
-            <C.Label>RG</C.Label>
-            <Input
-              type="text"
-              placeholder="Digite seu RG"
-              value={rg}
-              onChange={(e) => [setRg(e.target.value), setError("")]}
-            />
-          */}
             <C.Label>CPF</C.Label>
             <Input
               type="text"
               placeholder="Digite seu CPF"
               value={cpf}
               onChange={handleCpfChange}
+              mask="999.999.999-99"
             />
 
             <C.Label>CEP</C.Label>
@@ -203,6 +200,7 @@ const SignIn = () => {
               placeholder="Digite seu CEP"
               value={cep}
               onChange={handleCepChange}
+              mask="99999-999"
             />
             <C.Label>Estado</C.Label>
             <Input

@@ -81,7 +81,9 @@ const Navigation = ({ onToggleSidebar, back }) => {
     <C.NavigationWrapper>
       <C.NavigationContent>
         <MediaQuery minWidth={1280}>
+          <Link to="/home">
           <C.Logo src={logo} />
+          </Link>
 
           <C.NavigationItems className={C.NavigationContent}>
             <C.NavigationItem>
