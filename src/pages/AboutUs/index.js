@@ -5,6 +5,7 @@ import useAuth from '../../hooks/useAuth';
 import DOMPurify from 'dompurify';
 import { faCheck, faCog } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
+import logo from "../../assets/logo_sobre_nos.svg";
 
 const AboutUs = () => {
   const { user, permissions } = useAuth();
@@ -28,6 +29,12 @@ const AboutUs = () => {
 
   return (
     <>
+     <C.LogoContainer>
+      <C.Logo src={logo} alt="Image" />
+      <C.LogoText>SOBRE NÓS</C.LogoText>
+      
+       
+    </C.LogoContainer>
       <C.Container>
         <C.ContentContainer>
           {permissions?.includes("Administrador") && (  
