@@ -65,3 +65,16 @@ export const ProductInfoRow = styled.div`
   width: 90%;
   gap: 20px;
 `;
+
+export const SelectContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`;
+
+export const Label = styled.p`
+  font-size: 18px;
+  color: black;
+  margin-left: 5px;
+  margin-bottom: 5px;
+`;

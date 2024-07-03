@@ -9,15 +9,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import MediaQuery from 'react-responsive';
 import { ToastContainer, toast } from 'react-toastify';
+import Multiselect from 'multiselect-react-dropdown';
 
 
 const EditProduct = () => {
   const { product_id } = useParams();
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState();
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [productData, setProductData] = useState({
     title: '',
     price: '',
-    category: '',
+    discount: '',
+    brand: '',
+    bar: '',
     image: '',
     description: ''
   });
@@ -47,40 +52,137 @@ const EditProduct = () => {
       }
     };
 
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/categorias?limite=20&pagina=1`);
+        const data = await response.json();
+        setCategories(data);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    fetchCategories();
     fetchProduct();
   }, [product_id]);
 
   useEffect(() => {
-    if (product) {
+    if (product_id && product) {
       setProductData({
         title: product.nome,
         price: product.preco,
-        category: product.categoria,
+        discount: product.desconto_porcentual,
+        brand: product.marca,
+        bar: product.codigo_de_barras,
         image: product.imagens,
         description: product.descricao
       });
+
+      const selectedCategories = product.categorias.map(cat => ({
+        id: cat.id,
+        nome: cat.nome
+      }));
+      setSelectedCategories(selectedCategories);
     }
   }, [product]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    let val = value;
+
+    if (name === 'price' || name === 'discount') {
+      val = parseFloat(value);
+    }
+
     setProductData((prevProductData) => ({
       ...prevProductData,
-      [name]: value,
+      [name]: val,
     }));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    const reqBody = selectedCategories.map(cat => cat.id);
+    const requestBody = {
+      nome: productData.title,
+      preco: productData.price,
+      descricao: productData.description,
+      desconto_porcentual: productData.discount,
+      codigo_de_barras: productData.bar,
+      marca: productData.brand
+    };
+
     if (product_id) {
-      toast.success('Salvo', {
-        theme: "colored",
-      });
-      console.log(productData)
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?id=${product_id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+          },
+          body: JSON.stringify(requestBody),
+        });
+  
+        if (!response.ok) {
+          throw new Error("Erro ao atualizar/criar produto!");
+        }
+  
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/produtos/categorias?id=${product_id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+          },
+          body: JSON.stringify(reqBody),
+        });
+  
+        if (!res.ok) {
+          throw new Error("Erro ao atualizar categorias!");
+        }
+  
+        toast.success("Produto atualizado com sucesso", {
+          theme: "colored",
+        });
+      } catch (e) {
+        toast.error("Erro ao atualizar produto!");
+        console.error("Error:", e);
+      }
     } else {
-      toast.success('Novo', {
-        theme: "colored",
-      });
-      console.log(productData)
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+          },
+          body: JSON.stringify(requestBody),
+        });
+  
+        if (!response.ok) {
+          throw new Error("Erro ao atualizar/criar produto!");
+        }
+  
+        const data = await response.json();
+
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/produtos/categorias?id=${data.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+          },
+          body: JSON.stringify(reqBody),
+        });
+  
+        if (!res.ok) {
+          throw new Error("Erro ao atualizar categorias!");
+        }
+  
+        toast.success("Produto criado com sucesso", {
+          theme: "colored",
+        });
+      } catch (e) {
+        toast.error("Erro ao criar produto!");
+        console.error("Error:", e);
+      }
     }
   }
 
@@ -93,7 +195,7 @@ const EditProduct = () => {
           </C.Button>
         </ActionLink>
       </MediaQuery>
-      
+
       <C.ProductContainer>
 
         <C.Title>Editar Produto</C.Title>
@@ -101,8 +203,23 @@ const EditProduct = () => {
         <C.ProductInfoWrapper>
           <C.ProductInfoColumn>
             <InfoInput title="Nome" name="title" inputInfo={productData.title} onChange={handleInputChange} />
-            <InfoInput title="Categoria" name="category" inputInfo={productData.category} onChange={handleInputChange} />
-            <InfoInput title="Marca" name="price" inputInfo={productData.price} onChange={handleInputChange} />
+
+            <C.SelectContainer>
+              <C.Label>Categorias</C.Label>
+              <Multiselect
+                options={categories}
+                selectedValues={selectedCategories}
+                displayValue='nome'
+                onSelect={(selectedList) => setSelectedCategories(selectedList)}
+                onRemove={(selectedList) => setSelectedCategories(selectedList)}
+                showCheckbox={true}
+                placeholder='Selecione as categorias'
+                hidePlaceholder={true}
+                avoidHighlightFirstOption={true} />
+            </C.SelectContainer>
+
+            <InfoInput title="Marca" name="brand" inputInfo={productData.brand} onChange={handleInputChange} />
+            <InfoInput title="Código de barras" name="bar" inputInfo={productData.bar} onChange={handleInputChange} />
             <Textarea title="Descrição" name="description" info={productData.description} onChange={handleInputChange} />
           </C.ProductInfoColumn>
 
@@ -113,8 +230,9 @@ const EditProduct = () => {
 
             <C.ProductInfoRow>
               <InfoInput title="Preço" name="price" inputInfo={productData.price} onChange={handleInputChange} />
-              <InfoInput title="Desconto" name="price" inputInfo={productData.price} onChange={handleInputChange} />
+              <InfoInput title="Desconto" name="discount" inputInfo={productData.discount} onChange={handleInputChange} />
             </C.ProductInfoRow>
+
           </C.ProductInfoColumn>
         </C.ProductInfoWrapper>
         <C.ProductInfoRow>

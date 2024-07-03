@@ -10,10 +10,27 @@ import MediaQuery from 'react-responsive';
 const ProductsDashboard = () => {
   const [products, setProducts] = useState([]);
 
-  const handleDelete = (row) => {
-    toast.success('deletado', {
-      theme: "colored",
-    });
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?id=${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+        }
+      });
+
+      if (!response.ok) {
+        throw Error("Falha ao deletar produto");
+      }
+      const updatedProducts = products.filter(product => product.id !== id);
+      setProducts(updatedProducts);
+      toast.success("Produto deletado com sucesso!", {
+        theme: "colored",
+      });
+    } catch (e) {
+      toast.error("Erro ao deletar produto!");
+      console.log(e.message);
+    }
   };
 
   const columns = [
@@ -31,8 +48,20 @@ const ProductsDashboard = () => {
       grow: 2
     },
     {
+      name: "Marca",
+      selector: products => products.marca,
+      sortable: true,
+      grow: 1
+    },
+    {
       name: "Preço",
       selector: products => products.preco,
+      sortable: true,
+      grow: 1
+    },
+    {
+      name: "Desconto",
+      selector: products => products.desconto_porcentual,
       sortable: true,
       grow: 1
     },
@@ -46,7 +75,7 @@ const ProductsDashboard = () => {
             </C.Button>
           </C.ActionLink>
 
-          <C.Button onClick={() => handleDelete(row)}>
+          <C.Button onClick={() => handleDelete(row.id)}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </C.Button>
         </div>
@@ -83,7 +112,7 @@ const ProductsDashboard = () => {
             </C.Button>
           </C.ActionLink>
 
-          <C.Button onClick={() => handleDelete(row)}>
+          <C.Button onClick={() => handleDelete(row.id)}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </C.Button>
         </div>
@@ -99,7 +128,7 @@ const ProductsDashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?limite=20&pagina=1`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?limite=100&pagina=1`);
         const data = await response.json();
         setProducts(data);
       } catch (e) {
