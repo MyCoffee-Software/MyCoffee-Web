@@ -4,7 +4,16 @@ import Button from "../../Button"
 import { formatCurrency } from '@brazilian-utils/brazilian-utils';
 
 const PlanCard = ({ plan }) => {
-  const imagePath = require(`../../../assets/${plan.imagem.split('/').pop()}`);
+  const imageName = plan.imagem.split('/').pop();
+  let imagePath = null;
+
+  if (imageName && imageName.trim() !== "") {
+    try {
+      imagePath = require(`../../../assets/${imageName}`);
+    } catch (error) {
+      console.error(`Failed to load image: ${imageName}`, error);
+    }
+  }
 
   return (
     <C.PlanWrapper>

@@ -15,9 +15,11 @@ import Dashboard from "../pages/Dashboard";
 import LayoutDashboard from "../components/Layouts/LayoutDashboard";
 import ProductsDashboard from "../pages/Dashboard/Products/ListProducts";
 import EditProduct from "../pages/Dashboard/Products/EditProduct";
-import CategoryDashboard from "../pages/Dashboard/Category/ListCategorys";
+import CategoryDashboard from "../pages/Dashboard/Category";
 import PrivateRoute from "./PrivateRoute";
 import ForbiddenAccess from "../pages/ForbiddenAccess";
+import PlansDashboard from "../pages/Dashboard/Plans/ListPlans";
+import EditPlan from "../pages/Dashboard/Plans/EditPlan";
 
 const RoutesApp = () => {
   return (
@@ -65,6 +67,11 @@ const RoutesApp = () => {
                 <CategoryDashboard />
               </PrivateRoute>
             } />
+            <Route path="/dashboard/plan_dashboard" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <PlansDashboard />
+              </PrivateRoute>
+            } />
             <Route path="/dashboard/reports" element={
               <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
                 <Reports />
@@ -81,6 +88,19 @@ const RoutesApp = () => {
             <Route path="/dashboard/product_edit" element={
               <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
                 <EditProduct />
+              </PrivateRoute>
+            } />
+          </Route>
+
+          <Route element={<LayoutDashboard url="/dashboard/plan_dashboard" />}>
+            <Route path="/dashboard/plan_edit/:plan_id" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <EditPlan />
+              </PrivateRoute>
+            } />
+            <Route path="/dashboard/plan_edit" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <EditPlan />
               </PrivateRoute>
             } />
           </Route>

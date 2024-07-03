@@ -58,6 +58,11 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
                 <Link to={'/dashboard/category_dashboard'}>
                   <C.ContentButton>Categorias</C.ContentButton>
                 </Link>
+
+                <Link to={'/dashboard/plan_dashboard'}>
+                  <C.ContentButton>Planos</C.ContentButton>
+                </Link>
+
                 <C.ContentButton>Usuários</C.ContentButton>
 
                 <Link to={'/dashboard/reports'}>
@@ -109,8 +114,16 @@ const Sidebar = ({ isOpen, onToggleSidebar, dashboard = false }) => {
                 <Link to={'/dashboard/category_dashboard'} onClick={onToggleSidebar}>
                   <C.ContentButton>Categorias</C.ContentButton>
                 </Link>
+
+                <Link to={'/dashboard/plan_dashboard'}>
+                  <C.ContentButton>Planos</C.ContentButton>
+                </Link>
+
                 <C.ContentButton>Usuários</C.ContentButton>
-                <C.ContentButton>Relatórios</C.ContentButton>
+
+                <Link to={'/dashboard/reports'}>
+                  <C.ContentButton>Relatórios</C.ContentButton>
+                </Link>
               </>
             )}
           </C.SidebarContent>

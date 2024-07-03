@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as C from './styles';
-import Table from '../../../../components/Table';
+import Table from '../../../components/Table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faSave, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
