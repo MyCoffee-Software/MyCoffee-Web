@@ -20,6 +20,8 @@ import PrivateRoute from "./PrivateRoute";
 import ForbiddenAccess from "../pages/ForbiddenAccess";
 import PlansDashboard from "../pages/Dashboard/Plans/ListPlans";
 import EditPlan from "../pages/Dashboard/Plans/EditPlan";
+import EmployeesDashboard from "../pages/Dashboard/Employees/ListEmployees";
+import EditEmployee from "../pages/Dashboard/Employees/EditEmployes";
 
 const RoutesApp = () => {
   return (
@@ -62,6 +64,11 @@ const RoutesApp = () => {
                 <ProductsDashboard />
               </PrivateRoute>
             } />
+            <Route path="/dashboard/employees_dashboard" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <EmployeesDashboard />
+              </PrivateRoute>
+            } />
             <Route path="/dashboard/category_dashboard" element={
               <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
                 <CategoryDashboard />
@@ -88,6 +95,19 @@ const RoutesApp = () => {
             <Route path="/dashboard/product_edit" element={
               <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
                 <EditProduct />
+              </PrivateRoute>
+            } />
+          </Route>
+          
+          <Route element={<LayoutDashboard url="/dashboard/employees_dashboard" />}>
+            <Route path="/dashboard/employee_edit/:employee_id" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <EditEmployee />
+              </PrivateRoute>
+            } />
+            <Route path="/dashboard/employee_edit" element={
+              <PrivateRoute requiredsPermissions={['Administrador', 'Funcionário']}>
+                <EditEmployee />
               </PrivateRoute>
             } />
           </Route>

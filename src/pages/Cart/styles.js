@@ -5,11 +5,20 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 10px;
+  }
 `;
 
 export const TableContainer = styled.div`
   width: 70%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const ActionLink = styled(Link)`
@@ -49,7 +58,13 @@ export const SummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  `;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+`;
   
   export const SummaryTitle = styled.h2`
   text-align: center;
@@ -83,8 +98,13 @@ export const CheckoutButton = styled.button`
   margin-right: 20%;
   margin-left: 20%;
 
-
   &:hover {
     background-color: #67442B;
+  }
+
+  @media (max-width: 768px) {
+    padding: 15px 5px;
+    margin-right: 10%;
+    margin-left: 10%;
   }
 `;
