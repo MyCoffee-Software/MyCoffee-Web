@@ -4,24 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top:100px
-  margin-top:100px
-`;
-
-export const BannerContainer = styled.div`
-  max-width: 100%;
-  margin: 0 auto;
-  margin-top: -20px;
-  flex: 1;
-  margin-top:100px
-`;
-
-export const BannerImage = styled.img`
-  width: 100%; 
-  height: auto;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top:100px
+  margin-top:100px;
 `;
 
 export const ContentContainer = styled.div`
@@ -30,7 +13,7 @@ export const ContentContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-   
+  margin-top:10px; 
 `;
 
 export const IconContainer = styled.div`
@@ -38,7 +21,7 @@ export const IconContainer = styled.div`
   justify-content: flex-end;
   margin-bottom: 10px;
   width: 95%;
-  margin-top:100px
+  margin-top:10px;
 `;
 
 export const IconButton = styled(FontAwesomeIcon)`
@@ -108,17 +91,17 @@ export const Logo = styled.img`
 export const LogoText = styled.div`
   position: absolute;
   margin-top: 25px;
-  left: 50%; /* Posiciona a esquerda do texto no centro horizontal */
-  transform: translate(-50%, -50%); /* Move o texto de volta metade da sua própria largura e altura, para centralizar completamente */
-  text-align: center; /* Alinha o texto ao centro */
-  color: white; /* Cor do texto */
-  font-family: 'Volkhov', serif; /* Fonte Volkhov */
-  font-size: 30px; /* Tamanho da fonte */
-  font-weight: bold; /* Peso da fonte */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-family: 'Volkhov', serif;
+  font-size: 30px;
+  font-weight: bold;
   text-shadow: 
     -1px -1px 0 #000,  
      1px -1px 0 #000,
     -1px  1px 0 #000,
-     1px  1px 0 #000; /* Sombra do texto para simular borda */
-  padding: 10px 20px; /* Espaçamento interno do texto */
+     1px  1px 0 #000;
+  padding: 10px 20px;
 `;
