@@ -19,19 +19,21 @@ const Navigation = ({ onToggleSidebar, back }) => {
   const [showResults, setShowResults] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const searchTimeout = useRef(null);
-  const [userImage, setUserImage] = useState(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
-    if (user && user.imagem) {
-      const imageName = user.imagem.split('/').pop();
-      import(`../../assets/User/${imageName}`)
-        .then(imageModule => {
-          setUserImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
+    const fetchImages = async () => {
+      try {
+        const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${user.imagem}`);
+        const imageBlob = await imageRes.blob();
+        const imageURL = URL.createObjectURL(imageBlob);
+        setImage(imageURL);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
+
+    fetchImages();
   }, [user]);
 
   const handleChange = (event) => {
@@ -108,7 +110,7 @@ const Navigation = ({ onToggleSidebar, back }) => {
 
             {user ? (
               <>
-                <ProfileMenu userImage={userImage} />
+                <ProfileMenu userImage={image} />
                 <C.Label>{user.nome}</C.Label>
               </>
             ) : (
