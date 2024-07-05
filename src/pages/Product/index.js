@@ -5,14 +5,16 @@ import QuantitySelector from '../../components/QuantityPicker';
 import MediaQuery from 'react-responsive';
 import useAuth from '../../hooks/useAuth';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Product = () => {
-  const { permissions } = useAuth();
+  const { user, permissions } = useAuth();
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [productImage, setProductImage] = useState(null);
 
+  /*
   useEffect(() => {
     if (product && product.imagens) {
       const imageName = product.imagens.split('/').pop();
@@ -25,6 +27,7 @@ const Product = () => {
         });
     }
   }, [product]);
+  */
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -44,8 +47,34 @@ const Product = () => {
     setQuantity(newQuantity);
   };
 
+  const handleBuy = async () => {
+    try {
+      if (!user) {
+        throw Error("Precisa estar logado para comprar!");
+      }
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/carrinho/produtos`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+        },
+        body: JSON.stringify({idProduto: product.id, quantidade: quantity}),
+      });
+
+      if (!response.ok) {
+        throw Error("Erro ao adicionar produto ao carrinho!");
+      }
+      
+      toast.success("Produto adicionado ao carrinho!");
+    } catch (e) {
+      toast.error(e.message);
+    }
+  }
+
   return (
     <C.ProductWrapper>
+      <ToastContainer/>
       <C.ProcutContent>
         <MediaQuery minWidth={600}>
           <C.ImageContainer>
@@ -67,7 +96,7 @@ const Product = () => {
 
             <C.BuyContainer>
               <QuantitySelector quantity={quantity} onQuantityChange={handleQuantityChange}></QuantitySelector>
-              <C.BuyButton>Comprar</C.BuyButton>
+              <C.BuyButton onClick={handleBuy}>Comprar</C.BuyButton>
             </C.BuyContainer>
           </C.DetailsContainer>
         </MediaQuery>
@@ -93,7 +122,7 @@ const Product = () => {
             <C.Label fontSize="16px">{product.descricao}</C.Label>
           </C.DetailsContainer>
 
-          <C.BuyButton>Comprar</C.BuyButton>
+          <C.BuyButton onClick={handleBuy}>Comprar</C.BuyButton>
         </MediaQuery>
       </C.ProcutContent>
     </C.ProductWrapper>

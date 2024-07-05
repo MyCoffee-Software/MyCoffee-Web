@@ -11,6 +11,7 @@ export const Table = styled(DataTable)`
     width: 100%;
     margin: 0 auto;
   }
+  margin-bottom: 15px;
 `;
 
 export const Image = styled.img`

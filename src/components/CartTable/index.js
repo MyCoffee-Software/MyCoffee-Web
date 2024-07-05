@@ -8,7 +8,6 @@ const CartTable = ({ title, cols, data }) => {
       <C.Table
         columns={cols}
         data={data}
-        pagination
         selectableRows
       />
     </>

@@ -54,7 +54,7 @@ export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 45%;
+  width: 60%;
   margin-left: 20px;
   text-align: justify;
   padding-top: 30px;
