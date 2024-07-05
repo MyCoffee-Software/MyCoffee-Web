@@ -15,7 +15,7 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/sobre`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/descricoes/sobre`);
         const data = await response.text();
         console.log(data);
         setContent(data);
@@ -33,12 +33,13 @@ const AboutUs = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/sobre`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ content }),
+      const formData = new FormData();
+      const blob = new Blob([content], { type: 'text/html' });
+      formData.append('file', blob, 'sobre.html');
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/descricoes/sobre`, {
+        method: 'PUT',
+        body: formData,
       });
       if (!response.ok) {
         throw new Error('Erro ao salvar o conteúdo');
