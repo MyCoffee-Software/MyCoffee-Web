@@ -14,6 +14,9 @@ const PlansDashboard = () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/planos?id=${id}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+        },
       });
 
       if (!response.ok) {

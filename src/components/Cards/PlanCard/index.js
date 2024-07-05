@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as C from "./styles"
 import Button from "../../Button"
 import { formatCurrency } from '@brazilian-utils/brazilian-utils';
 import useAuth from '../../../hooks/useAuth';
 import { toast, ToastContainer } from 'react-toastify';
+import ImageDisplay from '../../ImageDisplay';
 
 const PlanCard = ({ plan }) => {
   const { user } = useAuth();
+  const [images, setImages] = useState([]);
 
-  let imagePath = null;
-  /*
-  const imageName = plan.imagem.split('/').pop();
-
-  if (imageName && imageName.trim() !== "") {
-    try {
-      imagePath = require(`../../../assets/${imageName}`);
-    } catch (error) {
-      console.error(`Failed to load image: ${imageName}`, error);
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const imageUrls = await Promise.all(
+          plan.imagens.map(async (imageUrl) => {
+            const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${imageUrl}`);
+            const imageBlob = await imageRes.blob();
+            return URL.createObjectURL(imageBlob);
+          })
+        );
+        setImages(imageUrls);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
-  }*/
+
+    fetchImages();
+  }, [plan]);
 
   const handleBuyMonth = async () => {
     try {
@@ -72,7 +81,7 @@ const PlanCard = ({ plan }) => {
 
         toast.success("Produto adicionado ao carrinho!");
         return;
-      } 
+      }
 
       if (!response.ok) {
         throw Error("Erro ao adicionar produto ao carrinho!");
@@ -86,7 +95,7 @@ const PlanCard = ({ plan }) => {
 
   return (
     <C.PlanWrapper>
-      <ToastContainer/>
+      <ToastContainer />
       <C.Name>{plan.nome}</C.Name>
 
       <C.PriceMonthWrapper>
@@ -100,7 +109,7 @@ const PlanCard = ({ plan }) => {
       </C.PriceMonthWrapper>
 
       <C.ImageContainer>
-        <C.Image src={imagePath} alt={plan.nome} />
+        <ImageDisplay images={images} />
       </C.ImageContainer>
 
       <C.Iten>{plan.descricao}</C.Iten>

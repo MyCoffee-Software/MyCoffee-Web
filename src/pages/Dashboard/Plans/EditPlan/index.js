@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import MediaQuery from 'react-responsive';
 import { ToastContainer, toast } from 'react-toastify';
+import ImageDisplay from '../../../../components/ImageDisplay';
 
 const EditPlan = () => {
   const { plan_id } = useParams();
@@ -22,20 +23,8 @@ const EditPlan = () => {
     image: '',
     description: ''
   });
-  const [planImage, setPlanImage] = useState(null);
-
-  useEffect(() => {
-    if (plan && plan.imagem) {
-      const imageName = plan.imagem.split('/').pop();
-      import(`../../../../assets/${imageName}`)
-        .then(imageModule => {
-          setPlanImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
-    }
-  }, [plan]);
+  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
 
   useEffect(() => {
     const fetchPlan = async () => {
@@ -43,6 +32,15 @@ const EditPlan = () => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/planos?id=${plan_id}`);
         const data = await response.json();
         setPlan(data);
+
+        const imageUrls = await Promise.all(
+          data.imagens.map(async (imageUrl) => {
+            const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${imageUrl}`);
+            const imageBlob = await imageRes.blob();
+            return URL.createObjectURL(imageBlob);
+          })
+        );
+        setImage(imageUrls);
       } catch (e) {
         console.error(e);
       }
@@ -59,7 +57,6 @@ const EditPlan = () => {
         priceYear: plan.precoAnual,
         discount: plan.desconto,
         active: plan.ativo,
-        //category: plan.categoria,
         image: plan.imagem,
         description: plan.descricao
       });
@@ -87,6 +84,29 @@ const EditPlan = () => {
   const handleSave = async () => {
     if (plan_id) {
       try {
+        let imagePath = '';
+        if (imageFile) {
+          const formData = new FormData();
+          const fileExtension = imageFile.name.split('.').pop();
+          const sanitizedTitle = planData.title.replace(/[^a-zA-Z0-9]/g, '_');
+          const timestamp = Date.now();
+          const randomId = Math.random().toString(36).substring(2, 8);
+          const imageName = `${sanitizedTitle}_2_${timestamp}_${randomId}.${fileExtension}`;
+          formData.append('imagem', imageFile, imageName);
+
+          const imageResponse = await fetch(`${process.env.REACT_APP_API_URL}/imagens/planos/${imageName}`, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (!imageResponse.ok) {
+            throw new Error('Erro ao enviar imagem para o servidor');
+          }
+
+          const imageResult = await imageResponse.json();
+          imagePath = imageResult.URL;
+        }
+
         const response = await fetch(`${process.env.REACT_APP_API_URL}/planos?id=${plan_id}`, {
           method: 'PUT',
           headers: {
@@ -98,9 +118,9 @@ const EditPlan = () => {
             precoMensal: planData.priceMonth,
             precoAnual: planData.priceYear,
             desconto: planData.discount,
-            ativo: planData.active,
+            ativo: true,
             descricao: planData.description,
-            imagem: planData.image
+            imagens: [imagePath]
           }),
         });
 
@@ -117,7 +137,31 @@ const EditPlan = () => {
       }
     } else {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/planos`, {
+        let imagePath = '';
+        if (imageFile) {
+          const formData = new FormData();
+          const fileExtension = imageFile.name.split('.').pop();
+          const sanitizedTitle = planData.title.replace(/[^a-zA-Z0-9]/g, '_');
+          const timestamp = Date.now();
+          const randomId = Math.random().toString(36).substring(2, 8);
+          const imageName = `${sanitizedTitle}_2_${timestamp}_${randomId}.${fileExtension}`;
+          formData.append('imagem', imageFile, imageName);
+
+          const imageResponse = await fetch(`${process.env.REACT_APP_API_URL}/imagens/planos/${imageName}`, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (!imageResponse.ok) {
+            throw new Error('Erro ao enviar imagem para o servidor');
+          }
+
+          const imageResult = await imageResponse.json();
+          imagePath = imageResult.URL;
+        }
+
+
+        const createResponse = await fetch(`${process.env.REACT_APP_API_URL}/planos`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -130,13 +174,23 @@ const EditPlan = () => {
             desconto: planData.discount,
             ativo: true,
             descricao: planData.description,
-            imagem: "a.png"
+            imagens: [imagePath]
           }),
         });
 
-        if (!response.ok) {
+        if (!createResponse.ok) {
           throw new Error("Erro ao criar plano!");
         }
+
+        const data = await createResponse.json();
+        const imageUrls = await Promise.all(
+          data.imagens.map(async (imageUrl) => {
+            const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${imageUrl}`);
+            const imageBlob = await imageRes.blob();
+            return URL.createObjectURL(imageBlob);
+          })
+        );
+        setImage(imageUrls);
 
         toast.success('Salvo', {
           theme: "colored",
@@ -148,6 +202,11 @@ const EditPlan = () => {
     }
   }
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
+
   return (
     <>
       <MediaQuery minWidth={1280}>
@@ -157,7 +216,7 @@ const EditPlan = () => {
           </C.Button>
         </ActionLink>
       </MediaQuery>
-      
+
       <C.ProductContainer>
 
         <C.Title>Editar Plano</C.Title>
@@ -167,11 +226,12 @@ const EditPlan = () => {
             <InfoInput title="Nome" name="title" inputInfo={planData.title} onChange={handleInputChange} />
             <InfoInput title="Ativo" type="checkbox" name="active" checked={planData.active} onChange={handleInputChange} />
             <Textarea title="Descrição" name="description" info={planData.description} onChange={handleInputChange} />
+            <input type="file" accept="image/*" onChange={handleImageChange} />
           </C.ProductInfoColumn>
 
           <C.ProductInfoColumn>
             <C.ProductImageContainer>
-              <C.ProductImage src={planImage} />
+              <ImageDisplay images={image} />
             </C.ProductImageContainer>
 
             <C.ProductInfoRow>
