@@ -7,21 +7,22 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const ProductCard = ({ product }) => {
   const { user } = useAuth();
-  const [productImage, setProductImage] = useState(null);
+  const [image, setImage] = useState(null);
 
-  /*
   useEffect(() => {
-    if (product && product.imagens) {
-      const imageName = product.imagens.split('/').pop();
-      import(`../../../assets/${imageName}`)
-        .then(imageModule => {
-          setProductImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
+    const fetchImages = async () => {
+      try {
+        const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${product.imagens[0]}`);
+        const imageBlob = await imageRes.blob();
+        const imageURL = URL.createObjectURL(imageBlob);
+        setImage(imageURL);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
-  }, [product]);*/
+
+    fetchImages();
+  }, [product]);
 
   const handleBuy = async () => {
     try {
@@ -52,8 +53,8 @@ const ProductCard = ({ product }) => {
     <C.ProductWrapper>
       <ToastContainer/>
       <Link to={`/product/${product.id}`}>
-        <C.ImageContainer onClick={handleBuy}>
-          <C.Image src={productImage} alt={product.nome} />
+        <C.ImageContainer>
+          <C.Image src={image} alt={product.nome} />
         </C.ImageContainer>
       </Link>
 

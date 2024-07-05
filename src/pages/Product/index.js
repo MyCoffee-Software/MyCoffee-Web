@@ -6,28 +6,33 @@ import MediaQuery from 'react-responsive';
 import useAuth from '../../hooks/useAuth';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { toast, ToastContainer } from 'react-toastify';
+import ImageDisplay from '../../components/ImageDisplay';
 
 const Product = () => {
   const { user, permissions } = useAuth();
   const { product_id } = useParams();
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const [productImage, setProductImage] = useState(null);
+  const [images, setImages] = useState([]);
 
-  /*
   useEffect(() => {
-    if (product && product.imagens) {
-      const imageName = product.imagens.split('/').pop();
-      import(`../../assets/${imageName}`)
-        .then(imageModule => {
-          setProductImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
+    const fetchImages = async () => {
+      try {
+        const imageUrls = await Promise.all(
+          product.imagens.map(async (imageUrl) => {
+            const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${imageUrl}`);
+            const imageBlob = await imageRes.blob();
+            return URL.createObjectURL(imageBlob);
+          })
+        );
+        setImages(imageUrls);
+      } catch (e) {
+        console.log(e.message);
+      }
     }
+
+    fetchImages();
   }, [product]);
-  */
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -78,7 +83,7 @@ const Product = () => {
       <C.ProcutContent>
         <MediaQuery minWidth={600}>
           <C.ImageContainer>
-            <C.Image src={productImage} />
+            <ImageDisplay images={images}/>
           </C.ImageContainer>
 
           <C.DetailsContainer>

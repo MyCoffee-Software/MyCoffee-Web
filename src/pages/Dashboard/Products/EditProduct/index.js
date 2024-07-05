@@ -10,6 +10,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import MediaQuery from 'react-responsive';
 import { ToastContainer, toast } from 'react-toastify';
 import Multiselect from 'multiselect-react-dropdown';
+import ImageDisplay from '../../../../components/ImageDisplay';
 
 
 const EditProduct = () => {
@@ -26,20 +27,9 @@ const EditProduct = () => {
     image: '',
     description: ''
   });
-  const [productImage, setProductImage] = useState(null);
+  const [image, setImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
 
-  useEffect(() => {
-    if (product && product.imagens) {
-      const imageName = product.imagens.split('/').pop();
-      import(`../../../../assets/${imageName}`)
-        .then(imageModule => {
-          setProductImage(imageModule.default);
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageName}`, error);
-        });
-    }
-  }, [product]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,6 +37,15 @@ const EditProduct = () => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/produtos?id=${product_id}`);
         const data = await response.json();
         setProduct(data);
+
+        const imageUrls = await Promise.all(
+          data.imagens.map(async (imageUrl) => {
+            const imageRes = await fetch(`${process.env.REACT_APP_API_URL}/imagens/${imageUrl}`);
+            const imageBlob = await imageRes.blob();
+            return URL.createObjectURL(imageBlob);
+          })
+        );
+        setImage(imageUrls);
       } catch (e) {
         console.error(e);
       }
@@ -101,6 +100,37 @@ const EditProduct = () => {
   };
 
   const handleSave = async () => {
+    let imagePath = '';
+    try {
+      if (imageFile) {
+        const formData = new FormData();
+        const fileExtension = imageFile.name.split('.').pop();
+        const sanitizedTitle = productData.title.replace(/[^a-zA-Z0-9]/g, '_');
+        const timestamp = Date.now();
+        const randomId = Math.random().toString(36).substring(2, 8);
+        const imageName = `${sanitizedTitle}_2_${timestamp}_${randomId}.${fileExtension}`;
+        formData.append('imagem', imageFile, imageName);
+
+        const imageResponse = await fetch(`${process.env.REACT_APP_API_URL}/imagens/produtos/${imageName}`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+          },
+          body: formData,
+        });
+
+        if (!imageResponse.ok) {
+          throw new Error('Erro ao enviar imagem para o servidor');
+        }
+
+        const imageResult = await imageResponse.json();
+        imagePath = imageResult.URL;
+      }
+    } catch(e) {
+      toast.error(e.message);
+      console.log(e.message);
+    }
+
     const reqBody = selectedCategories.map(cat => cat.id);
     const requestBody = {
       nome: productData.title,
@@ -108,7 +138,8 @@ const EditProduct = () => {
       descricao: productData.description,
       desconto_porcentual: productData.discount,
       codigo_de_barras: productData.bar,
-      marca: productData.brand
+      marca: productData.brand,
+      imagens: [imagePath]
     };
 
     if (product_id) {
@@ -186,6 +217,11 @@ const EditProduct = () => {
     }
   }
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
+
   return (
     <>
       <MediaQuery minWidth={1280}>
@@ -221,11 +257,12 @@ const EditProduct = () => {
             <InfoInput title="Marca" name="brand" inputInfo={productData.brand} onChange={handleInputChange} />
             <InfoInput title="Código de barras" name="bar" inputInfo={productData.bar} onChange={handleInputChange} />
             <Textarea title="Descrição" name="description" info={productData.description} onChange={handleInputChange} />
+            <input type="file" accept="image/*" onChange={handleImageChange} />
           </C.ProductInfoColumn>
 
           <C.ProductInfoColumn>
             <C.ProductImageContainer>
-              <C.ProductImage src={productImage} />
+              <ImageDisplay images={image}/>
             </C.ProductImageContainer>
 
             <C.ProductInfoRow>

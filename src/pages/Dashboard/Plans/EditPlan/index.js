@@ -96,6 +96,9 @@ const EditPlan = () => {
 
           const imageResponse = await fetch(`${process.env.REACT_APP_API_URL}/imagens/planos/${imageName}`, {
             method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+            },
             body: formData,
           });
 
@@ -149,6 +152,9 @@ const EditPlan = () => {
 
           const imageResponse = await fetch(`${process.env.REACT_APP_API_URL}/imagens/planos/${imageName}`, {
             method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem("user_token")}`
+            },
             body: formData,
           });
 
